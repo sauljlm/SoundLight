@@ -35,5 +35,5 @@ function getJson(url, funct) {
 }
 
 window.onload = function () {
-  getJson('http://localhost:1234/api/v1/songs', getSongs);
+  getJson('./songs.json', getSongs);
 };
