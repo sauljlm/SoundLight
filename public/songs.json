@@ -3,7 +3,7 @@
     "title": "Boret",
     "artist": "Billie Eilish",
     "cover": "BoredCover.png",
-    "mp3": "https://sauljlm.github.io/songs/Bored.mp3",
+    "mp3": "Bored",
     "started": false,
     "dataSong": "Boret"
   },
@@ -11,7 +11,7 @@
     "title": "rockstar",
     "artist": "Post Malone",
     "cover": "rockstarCover.jpg",
-    "mp3": "https://sauljlm.github.io/songs/rockstar.mp3",
+    "mp3": "rockstar",
     "started": false,
     "dataSong": "rockstar"
   },
@@ -19,7 +19,7 @@
     "title": "Ocean Eyes",
     "artist": "Billie Eilish",
     "cover": "oceanEyesCover.jpg",
-    "mp3": "https://sauljlm.github.io/songs/Ocean%20Eyes.mp3",
+    "mp3": "Ocean%20Eyes",
     "started": false,
     "dataSong": "Ocean Eyes"
   },
@@ -27,15 +27,15 @@
     "title": "On Melancholy Hill",
     "artist": "Gorillaz",
     "cover": "OnMelancholy HillCover.jpg",
-    "mp3": "https://sauljlm.github.io/songs/On%20Melancholy%20Hill.mp3",
+    "mp3": "On%20Melancholy%20Hill",
     "started": false,
-    "dataSong": "Boret"
+    "dataSong": "On Melancholy Hill"
   },
   {
     "title": "believer",
     "artist": "Imagine Dragons",
     "cover": "believerCover.jpg",
-    "mp3": "https://sauljlm.github.io/songs/Believer.mp3",
+    "mp3": "Believer",
     "started": false,
     "dataSong": "believer"
   },
@@ -43,7 +43,7 @@
     "title": "gangsta's paradise",
     "artist": "Coolio",
     "cover": "ganstaCover.jpg",
-    "mp3": "https://sauljlm.github.io/songs/gansta's%20paradice.mp3",
+    "mp3": "gansta's%20paradice",
     "started": false,
     "dataSong": "gangsta's paradise"
   },
@@ -51,7 +51,7 @@
     "title": "tranz",
     "artist": "Gorillaz",
     "cover": "TranzCover.jpg",
-    "mp3": "https://sauljlm.github.io/songs/Tranz.mp3",
+    "mp3": "Tranz",
     "started": false,
     "dataSong": "tranz"
   },
@@ -59,7 +59,7 @@
     "title": "Panda",
     "artist": "Desiigner",
     "cover": "pandaCover.jpg",
-    "mp3": "https://sauljlm.github.io/songs/panda.mp3",
+    "mp3": "panda",
     "started": false,
     "dataSong": "Panda"
   },
@@ -67,7 +67,7 @@
     "title": "i dont wannabe you any more",
     "artist": "Billie Eillish",
     "cover": "idontwannabeyouanymoreCover.jpg",
-    "mp3": "https://sauljlm.github.io/songs/idontwannabeyouanymore.mp3",
+    "mp3": "idontwannabeyouanymore",
     "started": false,
     "dataSong": "idontwannabeyouanymore"
   },
@@ -75,7 +75,7 @@
     "title": "hostenage",
     "artist": "Gorillaz",
     "cover": "hostenageCover.jpg",
-    "mp3": "https://sauljlm.github.io/songs/hostage.mp3",
+    "mp3": "hostage",
     "started": false,
     "dataSong": "hostenage"
   },
@@ -83,7 +83,7 @@
     "title": "Without Me",
     "artist": "Halsey",
     "cover": "withoutMeCover.jpg",
-    "mp3": "https://sauljlm.github.io/songs/Without%20Me.mp3",
+    "mp3": "Without%20Me",
     "started": false,
     "dataSong": "Without Me"
   },
@@ -91,7 +91,7 @@
     "title": "when the party's over",
     "artist": "Billie Eillish",
     "cover": "when-the-partys-over.jpg",
-    "mp3": "https://sauljlm.github.io/songs/when%20the%20party's%20over.mp3",
+    "mp3": "when%20the%20party's%20over",
     "started": false,
     "dataSong": "when the party's over"
   }

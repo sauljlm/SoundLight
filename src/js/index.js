@@ -1,5 +1,5 @@
-// import dayjs from 'dayjs';
-import 'dayjs/locale/es';
+// Load scripts.
+import Player from './player';
 
 // Load styles.
 import '../scss/style.scss';
@@ -7,20 +7,16 @@ import '../scss/style.scss';
 // Register service worker.
 import './registerServiceWorker';
 
-function getSongs(data) {
-  console.log(data);
-}
+// const singleton = new Singleton();
+// const player = new Player('.cont-audio');
+// const IMPORT = new Import();
 
-function getJson(url, funct) {
-  fetch(url)
-    .then((data) => { return data.json(); })
-    .then((data) => {
-      if (typeof funct === 'function') {
-        funct(data);
-      }
-    });
-}
+(function initial() {
+  let player = null;
+  function init() {
+    player = new Player('#container', 'On%20Melancholy%20Hill');
+    console.log('player', player); // eslint-disable-line
+  }
 
-window.onload = function initial() {
-  getJson('./songs.json', getSongs);
-};
+  document.addEventListener('DOMContentLoaded', init);
+}());
