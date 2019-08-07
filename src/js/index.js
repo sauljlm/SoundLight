@@ -2,7 +2,7 @@
 import Player from './player';
 
 // Load styles.
-import '../scss/style.scss';
+import '../css/style.css';
 
 // Register service worker.
 import './registerServiceWorker';
@@ -14,7 +14,7 @@ import './registerServiceWorker';
 (function initial() {
   let player = null;
   function init() {
-    player = new Player('#container', 'On%20Melancholy%20Hill');
+    player = new Player('#songs_container', 'On%20Melancholy%20Hill');
     console.log('player', player); // eslint-disable-line
   }
 

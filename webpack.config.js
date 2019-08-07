@@ -50,7 +50,7 @@ module.exports = {
             },
           },
           'css-loader',
-          'sass-loader',
+          'scss-loader',
         ],
       },
       {
