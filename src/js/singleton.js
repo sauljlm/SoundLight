@@ -30,7 +30,7 @@ export default class Singleton {
   get getRandomSong() {
     const random = Math.round(Math.random() * (this.DATA.length - 0) + 0);
     this.playing = random;
-    return this.DATA[random].mp3;
+    return this.DATA[random];
   }
 
   getOne(random) {
@@ -38,7 +38,7 @@ export default class Singleton {
     if (random === true) {
       song = this.getRandomSong;
     } else {
-      song = this.DATA[this.playing].mp3;
+      song = this.DATA[this.playing];
     }
     return song;
   }
@@ -48,7 +48,7 @@ export default class Singleton {
     if (random === true) {
       song = this.getRandomSong;
     } else {
-      song = this.DATA[next].mp3;
+      song = this.DATA[next];
       this.playing = next;
     }
     return song;
@@ -59,7 +59,7 @@ export default class Singleton {
     if (random === true) {
       song = this.getRandomSong;
     } else {
-      song = this.DATA[back].mp3;
+      song = this.DATA[back];
       this.playing = back;
     }
     return song;

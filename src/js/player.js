@@ -3,9 +3,16 @@ import Singleton from './singleton';
 export default class Player {
   constructor(selector) {
     this.container = document.querySelector(selector);
+    this.contPlayer = document.querySelector('.song_cover');
+    this.contCover = document.querySelector('.song_coverimage');
+    this.contName = document.querySelector('.song_name');
+    this.contArtist = document.querySelector('.song_artist');
+    this.btnClose = document.querySelector('.btn-close');
+
     this.SONGS_URL = 'https://sauljlm.github.io/songs-data';
     this.audio = new Audio();
     this.singleton = new Singleton();
+    this.songData = null;
 
     // elements
     // this.mutedIcon = null;
@@ -26,14 +33,16 @@ export default class Player {
 
     this.songUrl = this.singleton.getOne(this.RANDOM);
 
-    this.render();
+    this.renderPlayer();
     this.load(this.songUrl);
+    this.render();
 
     // EVENTS
     this.audio.addEventListener('ended', () => {
       this.time = 0;
-      this.load(this.singleton.getOne(this.RANDOM, this.setNext()));
+      this.load(this.singleton.getNext(this.RANDOM, this.setNext()));
       this.play();
+      this.render();
     });
 
     this.audio.addEventListener('loadeddata', () => {
@@ -144,13 +153,22 @@ export default class Player {
   }
 
   render() {
+    // this.contCover.style.backgroundImage = `url('../../img/covers/${this.songData.cover}')`;
+    this.contName.innerHTML = `${this.songData.title}`;
+    this.contArtist.innerHTML = `${this.songData.artist}`;
+    this.btnClose.addEventListener('click', () => {
+      this.contPlayer.classList.toggle('hide-player');
+    });
+  }
+
+  renderPlayer() {
     const player = document.createElement('div');
-    player.classList.add('col', 's12');
+    player.classList.add('player');
 
     player.appendChild(this.timer());
     player.appendChild(this.controls());
 
-    this.container.appendChild(player);
+    this.contPlayer.appendChild(player);
   }
 
   controls() {
@@ -224,7 +242,8 @@ export default class Player {
 
   load(songUrl) {
     if (songUrl) {
-      const url = `${this.SONGS_URL}/${songUrl}.mp3`;
+      this.songData = songUrl;
+      const url = `${this.SONGS_URL}/${songUrl.mp3}.mp3`;
       this.audio.src = url;
     }
   }
@@ -243,9 +262,11 @@ export default class Player {
       this.time = 0;
       this.load(this.singleton.getNext(this.RANDOM, this.setNext()));
       this.play();
+      this.render();
     } else {
       this.load(this.singleton.getNext(this.RANDOM, this.setNext()));
       this.pause();
+      this.render();
     }
   }
 
@@ -254,9 +275,11 @@ export default class Player {
       this.time = 0;
       this.load(this.singleton.getBack(this.RANDOM, this.setBack()));
       this.play();
+      this.render();
     } else {
       this.load(this.singleton.getBack(this.RANDOM, this.setBack()));
       this.pause();
+      this.render();
     }
   }
 

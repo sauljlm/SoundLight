@@ -1,62 +1,14 @@
-body {
-  margin: 0;
-  padding: 0;
-}
-
-p {
-  color: blue;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 2rem;
-}
-
-button {
-  width: 50px;
-  height: 50px;
-  background-size: contain;
-  padding: 10px;
-}
-
-// .play {
-//   background-image: url('../img/sistem/play.png');
-// }
-
-// .btn-active {
-//   background-image: url('../img/sistem/pause.png');
-// }
-
-.timer {
-  display: flex;
-  justify-content: center;
-}
-
-.controls {
-  display: flex;
-  justify-content: center;
-}
-
-.hero-banner {
-  width: 100%;
-  height: 100vh;
-  background-color: #eee;
-}
-
-.hide-hero-banner {
-  display: none;
-}
-
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
 body {
-  /* background: rgb(57,0,40);
-  background: linear-gradient(8deg, rgba(57,0,40,1) 0%, rgba(129,71,126,1) 46%, rgba(84,179,235,1) 100%); */
-  background: rgb(34,193,195);
   background: linear-gradient(0deg, rgba(34,193,195,1) 20%, rgba(191,187,123,1) 80%, rgba(253,187,45,1) 100%);
 }
 
 header{
   background: rgb(220, 188, 87);
-  margin-top: -11%;
+  margin-top: -10%;
+  padding-bottom: 10px;
 }
 
 h1{
@@ -65,65 +17,45 @@ h1{
   font-family: 'Raleway', sans-serif;
 }
 
+ul {
+  padding: 0;
+  margin: 0;
+}
+
 h2{
   color:white;
   font-size: 35px;
   margin-left: 53%;
   margin-top: -10%;
+  margin-bottom: 0;
   font-family: 'Lato', sans-serif;
 }
 
 li{
+  box-sizing: border-box;
   list-style: none;
   background: rgb(92, 196, 153);
-  width: 109%;
+  width: 100%;
   height: 40%;
-  margin-left: -9%;
+  padding: 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button {
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  background-size: contain;
+  background-repeat: no-repeat;
+  overflow: hidden;
 }
 
 h3, h4{
   font-family: 'Lato', sans-serif;
   font-size: 22px;
-}
-
-.add_button{
-  width: 6%;
-  margin-bottom: -4%;
-  margin-left: 11%;
-}
-
-.active_song{
-  background:rgb(92, 196, 153);
-  width: 96%;
-  height: 40%;
-  text-align: center;
-  padding: 2%;
-}
-
-.favorite_button{
-  background: green;
-  width: 10%;
-  margin-left: 10%;
-  margin-bottom: -11%;
-  
-}
-
-.play_button{
-  background: red;
-  width: 10%;
-  margin-left: 80%;
-  margin-top: -10%;
-}
-
-.playlist_album{
-  width: 11%;
-  margin-top: 2%;
-}
-
-footer{
-  background: rgb(83, 183, 153);
-  margin-top: 6%;
-  text-align: center;
 }
 
 h4, h3, p{
@@ -136,27 +68,132 @@ p{
   margin-top: 0%;
 }
 
+footer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  height: 10%;
+}
+
+.container {
+  max-width: 100%;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+#songs_container {
+  height: 100vh;
+}
+
+.play, .play_button {
+  width: 50px;
+  height: 50px;
+  background-image: url('../img/system/play.png');
+}
+
+.btn-active {
+  background-image: url('../img/system/pause.png');
+}
+
+.back {
+  margin-top: 10px;
+  background-image: url('../img/system/back.png');
+}
+
+.next {
+  margin-top: 10px;
+  background-image: url('../img/system/next.png');
+}
+
+.random {
+  margin-top: 10px;
+  background-image: url('../img/system/random.png');
+}
+
+.repeat {
+  margin-top: 10px;
+  background-image: url('../img/system/repeat.png');
+}
+
+.btn-close {
+  background-image: url('../img/system/close.png');
+  width: 30px;
+  margin-left: 85%;
+  margin-top: 10%;
+}
+
+.timer {
+  height: 15vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.favorite_button {
+  background-image: url('../img/system/favorite.png');
+}
+
+.controls {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  height: 20vh;
+}
+
+.loarding {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(0deg, #22c1c3 20%, #bfbb7b 80%, #fdbb2d 100%);
+  z-index: 2;
+}
+
+.hide-loarding {
+  display: none;
+}
+
+.add_button{
+  width: 30px;
+  height: 30px;
+}
+
+.active_song{
+  background:rgb(92, 196, 153);
+  width: 100%;
+  height: 10%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 5px solid #499274;
+  box-sizing: border-box;
+}
+
+.playlist_album{
+  width: 10%;
+  margin-top: 15px;
+}
+
 .start_soundlight{
   display: none;
 }
 
 .song_cover{
-  background: rgb(34,193,195);
   background: linear-gradient(0deg, rgba(34,193,195,1) 20%, rgba(191,187,123,1) 80%, rgba(253,187,45,1) 100%);
-  padding: 10px;
-}
-
-.close_button{
-  width: 6%;
-  margin-left: 89%;
-  margin-top: 3%;
+  position: relative;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  transition: 1.5s;
+  z-index: 1;
 }
 
 .song_coverimage{
   align-items: center;
-  width: 59%;
-  margin-left: 21%;
-  margin-top: 14%;
+  width: 80%;
+  height: 40vh;
+  margin: 15% auto;
+  background-size: cover;
 }
 
 .song_name{
@@ -166,4 +203,14 @@ p{
 .song_artist{
   text-align: center;
   margin-top: -4%;
+}
+
+.songs_list {
+  max-height: 60%;
+  overflow:auto;
+}
+
+.hide-player {
+  top: 100%;
+  transition: 1.5s;
 }

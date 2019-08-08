@@ -9,17 +9,15 @@ import './registerServiceWorker';
 
 const cont = document.querySelector('#songs_container');
 const singleton = new Singleton();
-let heroBanner = null;
+let loarding = document.querySelector('.loarding');
 let player = null;
 
 function showLoarding() {
-  heroBanner = document.createElement('div');
-  heroBanner.setAttribute('class', 'hero-banner');
-  cont.appendChild(heroBanner);
+  loarding.classList.remove('hide-loarding');
 }
 
 function hideLoarding() {
-  heroBanner.classList.add('hide-hero-banner');
+  loarding.classList.add('hide-loarding');
 }
 
 function appStar() {
