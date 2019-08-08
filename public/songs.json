@@ -18,7 +18,7 @@
   {
     "title": "Ocean Eyes",
     "artist": "Billie Eilish",
-    "cover": "oceanEyesCover.jpg",
+    "cover": "oceanEyesCover.png",
     "mp3": "Ocean%20Eyes",
     "started": false,
     "dataSong": "Ocean Eyes"
@@ -50,7 +50,7 @@
   {
     "title": "tranz",
     "artist": "Gorillaz",
-    "cover": "TranzCover.jpg",
+    "cover": "TranzCover.jpeg",
     "mp3": "Tranz",
     "started": false,
     "dataSong": "tranz"
@@ -66,18 +66,18 @@
   {
     "title": "i dont wannabe you any more",
     "artist": "Billie Eillish",
-    "cover": "idontwannabeyouanymoreCover.jpg",
+    "cover": "idontwannabeyouanymore.jpg",
     "mp3": "idontwannabeyouanymore",
     "started": false,
     "dataSong": "idontwannabeyouanymore"
   },
   {
-    "title": "hostenage",
-    "artist": "Gorillaz",
-    "cover": "hostenageCover.jpg",
+    "title": "hostage",
+    "artist": "Billie Eillish",
+    "cover": "hostageCover.jpg",
     "mp3": "hostage",
     "started": false,
-    "dataSong": "hostenage"
+    "dataSong": "hostage"
   },
   {
     "title": "Without Me",
@@ -90,7 +90,7 @@
   {
     "title": "when the party's over",
     "artist": "Billie Eillish",
-    "cover": "when-the-partys-over.jpg",
+    "cover": "whenthepartysover.jpg",
     "mp3": "when%20the%20party's%20over",
     "started": false,
     "dataSong": "when the party's over"
@@ -162,7 +162,7 @@
   {
     "title": "i dont wannabe you any more",
     "artist": "Billie Eillish",
-    "cover": "idontwannabeyouanymoreCover.jpg",
+    "cover": "idontwannabeyouanymore.jpg",
     "mp3": "idontwannabeyouanymore",
     "started": false,
     "dataSong": "idontwannabeyouanymore"

@@ -4,7 +4,7 @@ export default class Player {
   constructor(selector) {
     this.container = document.querySelector(selector);
     this.contPlayer = document.querySelector('.song_cover');
-    this.contCover = document.querySelector('.song_coverimage');
+    this.contCover = document.querySelector('.cover');
     this.contName = document.querySelector('.song_name');
     this.contArtist = document.querySelector('.song_artist');
     this.btnClose = document.querySelector('.btn-close');
@@ -153,7 +153,8 @@ export default class Player {
   }
 
   render() {
-    // this.contCover.style.backgroundImage = `url('../../img/covers/${this.songData.cover}')`;
+    // this.contCover.style.backgroundColor = 'red';
+    this.contCover.setAttribute('src', `img/covers/${this.songData.cover}`);
     this.contName.innerHTML = `${this.songData.title}`;
     this.contArtist.innerHTML = `${this.songData.artist}`;
     this.btnClose.addEventListener('click', () => {
