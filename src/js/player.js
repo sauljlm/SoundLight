@@ -149,7 +149,6 @@ export default class Player {
   }
 
   render() {
-    // this.contCover.style.backgroundColor = 'red';
     this.contCover.setAttribute('src', `img/covers/${this.songData.cover}`);
     this.contName.innerHTML = `${this.songData.title}`;
     this.contArtist.innerHTML = `${this.songData.artist}`;
