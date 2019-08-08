@@ -1,11 +1,15 @@
+import Singleton from './singleton';
+
 export default class Player {
-  constructor(selector, songUrl = null) {
+  constructor(selector) {
     this.container = document.querySelector(selector);
     this.SONGS_URL = 'https://sauljlm.github.io/songs-data';
     this.audio = new Audio();
+    this.singleton = new Singleton();
 
     // elements
-    this.mutedIcon = null;
+    // this.mutedIcon = null;
+    this.randomIcon = null;
     this.playIcon = null;
     this.repeatIcon = null;
     this.timeElement = null;
@@ -13,17 +17,25 @@ export default class Player {
     this.durationElement = null;
 
     // values
+    // this.MUTED = false;
+    this.RANDOM = false;
     this.LOADED = false;
-    this.MUTED = false;
     this.PLAYING = false;
     this.REPEAT = false;
     this.TIME = 0;
 
+    this.songUrl = this.singleton.getOne(this.RANDOM);
+
     this.render();
-    this.load(songUrl);
+    this.load(this.songUrl);
 
     // EVENTS
-    // play the loaded audio until the first fram is loaded
+    this.audio.addEventListener('ended', () => {
+      this.time = 0;
+      this.load(this.singleton.getOne(this.RANDOM, this.setNext()));
+      this.play();
+    });
+
     this.audio.addEventListener('loadeddata', () => {
       this.loaded = true;
     });
@@ -48,16 +60,8 @@ export default class Player {
     this.durationElement.innerText = this.duration;
   }
 
-  get muted() {
-    return this.audio.muted;
-  }
-
-  set muted(value) {
-    this.MUTED = value;
-    this.audio.muted = this.MUTED;
-
-    // update the muted icon
-    this.mutedIcon.classList.toggle('active');
+  set random(value) {
+    this.RANDOM = value;
   }
 
   get playing() {
@@ -89,10 +93,8 @@ export default class Player {
   set time(value) {
     this.TIME = value;
 
-    // update the slider time
+    // update
     this.sliderElement.value = (this.TIME * 100) / this.audio.duration;
-
-    // updated the current duration
     this.timeElement.innerText = this.time;
   }
 
@@ -118,8 +120,27 @@ export default class Player {
       minutes = '00';
     }
     seconds = seconds < 10 ? `0${seconds}` : seconds;
-    console.log(`${minutes}:${seconds}`);
     return `${minutes}:${seconds}`;
+  }
+
+  setNext() {
+    let playing = this.singleton.getPlaying;
+    if (playing >= this.singleton.getSongs.length - 1) {
+      playing = 0;
+    } else {
+      playing += 1;
+    }
+    return playing;
+  }
+
+  setBack() {
+    let playing = this.singleton.getPlaying;
+    if (playing <= 0) {
+      playing = this.singleton.getSongs.length - 1;
+    } else {
+      playing -= 1;
+    }
+    return playing;
   }
 
   render() {
@@ -136,22 +157,34 @@ export default class Player {
     const controls = document.createElement('div');
     controls.classList.add('controls');
 
-    this.mutedIcon = document.createElement('button');
-    this.mutedIcon.classList.add('mute');
-
-    this.playIcon = document.createElement('button');
-    this.playIcon.classList.add('play');
+    // this.mutedIcon = document.createElement('button');
+    // this.mutedIcon.classList.add('mute');
+    this.dandomIcon = document.createElement('button');
+    this.dandomIcon.classList.add('random');
 
     this.repeatIcon = document.createElement('button');
     this.repeatIcon.classList.add('repeat');
 
-    // events
-    this.mutedIcon.addEventListener('click', this.toggleMute.bind(this));
-    this.playIcon.addEventListener('click', this.togglePlay.bind(this));
-    this.repeatIcon.addEventListener('click', this.toggleRepeat.bind(this));
+    this.playIcon = document.createElement('button');
+    this.playIcon.classList.add('play');
 
-    controls.appendChild(this.mutedIcon);
+    this.backIcon = document.createElement('button');
+    this.backIcon.classList.add('back');
+
+    this.nextIcon = document.createElement('button');
+    this.nextIcon.classList.add('next');
+
+    // events
+    this.dandomIcon.addEventListener('click', this.toggleRandom.bind(this));
+    this.repeatIcon.addEventListener('click', this.toggleRepeat.bind(this));
+    this.playIcon.addEventListener('click', this.togglePlay.bind(this));
+    this.backIcon.addEventListener('click', this.toggleBack.bind(this));
+    this.nextIcon.addEventListener('click', this.toggleNext.bind(this));
+
+    controls.appendChild(this.dandomIcon);
+    controls.appendChild(this.backIcon);
     controls.appendChild(this.playIcon);
+    controls.appendChild(this.nextIcon);
     controls.appendChild(this.repeatIcon);
     return controls;
   }
@@ -189,20 +222,42 @@ export default class Player {
     return row;
   }
 
-  load(songUrl = null) {
+  load(songUrl) {
     if (songUrl) {
-      this.songUrl = `${this.SONGS_URL}/${songUrl}.mp3`;
-      this.audio.src = this.songUrl;
+      const url = `${this.SONGS_URL}/${songUrl}.mp3`;
+      this.audio.src = url;
     }
   }
 
-  toggleMute() {
-    this.muted = !this.muted;
+  toggleRandom() {
+    this.random = !this.random;
   }
 
   togglePlay() {
     if (this.playing) this.pause();
     else this.play();
+  }
+
+  toggleNext() {
+    if (this.playing) {
+      this.time = 0;
+      this.load(this.singleton.getNext(this.RANDOM, this.setNext()));
+      this.play();
+    } else {
+      this.load(this.singleton.getNext(this.RANDOM, this.setNext()));
+      this.pause();
+    }
+  }
+
+  toggleBack() {
+    if (this.playing) {
+      this.time = 0;
+      this.load(this.singleton.getBack(this.RANDOM, this.setBack()));
+      this.play();
+    } else {
+      this.load(this.singleton.getBack(this.RANDOM, this.setBack()));
+      this.pause();
+    }
   }
 
   toggleRepeat() {
@@ -228,6 +283,8 @@ export default class Player {
   }
 
   ended() {
-    if (this.repeat) this.play();
+    if (this.repeat) {
+      this.play();
+    }
   }
 }

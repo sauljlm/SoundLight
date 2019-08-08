@@ -1,22 +1,36 @@
 // Load scripts.
 import Player from './player';
+import Singleton from './singleton';
 
 // Load styles.
-import '../css/style.css';
-
+import '../scss/style.scss';
 // Register service worker.
 import './registerServiceWorker';
 
-// const singleton = new Singleton();
-// const player = new Player('.cont-audio');
-// const IMPORT = new Import();
+const cont = document.querySelector('#songs_container');
+const singleton = new Singleton();
+let heroBanner = null;
+let player = null;
 
-(function initial() {
-  let player = null;
-  function init() {
-    player = new Player('#songs_container', 'On%20Melancholy%20Hill');
-    console.log('player', player); // eslint-disable-line
-  }
+function showLoarding() {
+  heroBanner = document.createElement('div');
+  heroBanner.setAttribute('class', 'hero-banner');
+  cont.appendChild(heroBanner);
+}
 
-  document.addEventListener('DOMContentLoaded', init);
-}());
+function hideLoarding() {
+  heroBanner.classList.add('hide-hero-banner');
+}
+
+function appStar() {
+  player = new Player('#songs_container');
+  console.log('player', player); // eslint-disable-line
+}
+
+function init() {
+  showLoarding();
+  setTimeout(appStar, 500);
+  setTimeout(hideLoarding, 3000);
+}
+
+document.addEventListener('DOMContentLoaded', init);

@@ -94,5 +94,109 @@
     "mp3": "when%20the%20party's%20over",
     "started": false,
     "dataSong": "when the party's over"
+  },
+  {
+    "title": "Dancin",
+    "artist": "Aron Smith",
+    "cover": "dancin.jpg",
+    "mp3": "Aaron%20Smith%20-%20Dancin%20(KRONO%20Remix)",
+    "started": false,
+    "dataSong": "Dancin"
+  },
+  {
+    "title": "bloodline",
+    "artist": "Ariana Grande",
+    "cover": "arianagrande.jpg",
+    "mp3": "Ariana%20Grande%20-%20bloodline%20(Audio)",
+    "started": false,
+    "dataSong": "bloodline"
+  },
+  {
+    "title": "No guidance",
+    "artist": "Drake",
+    "cover": "drake.jpg",
+    "mp3": "Chris%20Brown%20-%20No%20Guidance%20(Official%20Video)%20ft.%20Drake",
+    "started": false,
+    "dataSong": "No guidance"
+  },
+  {
+    "title": "Get Lucky",
+    "artist": "Daft Punk",
+    "cover": "daftpunk.jpg",
+    "mp3": "Daft%20Punk%20-%20Get%20Lucky%20(Official%20Audio)%20ft.%20Pharrell%20Williams,%20Nile%20Rodgers",
+    "started": false,
+    "dataSong": "Get Lucky"
+  },
+  {
+    "title": "We're Going Home",
+    "artist": "Drake",
+    "cover": "drake.jpg",
+    "mp3": "Drake%20-%20Hold%20On,%20We're%20Going%20Home",
+    "started": false,
+    "dataSong": "We're Going Home"
+  },
+  {
+    "title": "Ocean Drive",
+    "artist": "Duke Dumont",
+    "cover": "oceandrive.jpg",
+    "mp3": "Duke%20Dumont%20-%20Ocean%20Drive%20(Official%20Music%20Video)",
+    "started": false,
+    "dataSong": "Ocean Drive"
+  },
+  {
+    "title": "Hotel California",
+    "artist": "Eagles",
+    "cover": "hotelcalifornia.jpg",
+    "mp3": "Eagles%20-%20Hotel%20California%20(Lyrics)",
+    "started": false,
+    "dataSong": "Hotel California"
+  },
+  {
+    "title": "All night Long",
+    "artist": "Lionel Richie",
+    "cover": "lionell.jpg",
+    "mp3": "Lionel%20Richie%20All%20night%20Long",
+    "started": false,
+    "dataSong": "All night Long"
+  },
+  {
+    "title": "i dont wannabe you any more",
+    "artist": "Billie Eillish",
+    "cover": "idontwannabeyouanymoreCover.jpg",
+    "mp3": "idontwannabeyouanymore",
+    "started": false,
+    "dataSong": "idontwannabeyouanymore"
+  },
+  {
+    "title": "Say Say Say",
+    "artist": "Michael Jackson",
+    "cover": "saysaysay.jpg",
+    "mp3": "MIchael%20Jackson%20&%20Paul%20McCartney%20Say%20Say%20Say%20Lyrics",
+    "started": false,
+    "dataSong": "Say Say Say"
+  },
+  {
+    "title": "Baby Be Mine",
+    "artist": "Michael Jackson",
+    "cover": "michaeljackson.jpg",
+    "mp3": "Michael%20Jackson%20-Thriller%20-%20Baby%20Be%20Mine",
+    "started": false,
+    "dataSong": "Baby Be Mine"
+  },
+  {
+    "title": "Lady hear me tonight",
+    "artist": "Modjo",
+    "cover": "modjo.jpg",
+    "mp3": "Modjo%20-%20Lady%20(Hear%20Me%20Tonight)%20(Official%20Video)",
+    "started": false,
+    "dataSong": "Lady hear me tonight"
+  },
+  {
+    "title": "Malamente",
+    "artist": "Rosalía",
+    "cover": "malamente.jpg",
+    "mp3": "ROSALÍA%20-%20MALAMENTE%20(Cap.1%20Augurio)",
+    "started": false,
+    "dataSong": "Malamente"
   }
 ]
