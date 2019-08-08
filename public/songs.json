@@ -1,5 +1,13 @@
 [
   {
+    "title": "Dancin",
+    "artist": "Aron Smith",
+    "cover": "dancin.jpg",
+    "mp3": "Aaron%20Smith%20-%20Dancin%20(KRONO%20Remix)",
+    "started": false,
+    "dataSong": "Dancin"
+  },
+  {
     "title": "Boret",
     "artist": "Billie Eilish",
     "cover": "BoredCover.png",
@@ -94,14 +102,6 @@
     "mp3": "when%20the%20party's%20over",
     "started": false,
     "dataSong": "when the party's over"
-  },
-  {
-    "title": "Dancin",
-    "artist": "Aron Smith",
-    "cover": "dancin.jpg",
-    "mp3": "Aaron%20Smith%20-%20Dancin%20(KRONO%20Remix)",
-    "started": false,
-    "dataSong": "Dancin"
   },
   {
     "title": "bloodline",
