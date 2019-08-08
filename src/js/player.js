@@ -61,9 +61,6 @@ export default class Player {
   set loaded(value) {
     this.LOADED = value;
 
-    // update the play icon
-    this.playIcon.classList.toggle('active');
-
     this.timeElement.innerText = this.time;
     this.sliderElement.disabled = !this.LOADED;
     this.durationElement.innerText = this.duration;
@@ -71,6 +68,7 @@ export default class Player {
 
   set random(value) {
     this.RANDOM = value;
+    this.randomIcon.classList.toggle('random-active');
   }
 
   get playing() {
@@ -79,8 +77,6 @@ export default class Player {
 
   set playing(value) {
     this.PLAYING = value;
-
-    this.playIcon.classList.toggle('btn-active');
   }
 
   get repeat() {
@@ -92,7 +88,7 @@ export default class Player {
     this.audio.loop = this.REPEAT;
 
     // update icon
-    this.repeatIcon.classList.toggle('active');
+    this.repeatIcon.classList.toggle('repeat-active');
   }
 
   get time() {
@@ -178,8 +174,8 @@ export default class Player {
 
     // this.mutedIcon = document.createElement('button');
     // this.mutedIcon.classList.add('mute');
-    this.dandomIcon = document.createElement('button');
-    this.dandomIcon.classList.add('random');
+    this.randomIcon = document.createElement('button');
+    this.randomIcon.classList.add('random');
 
     this.repeatIcon = document.createElement('button');
     this.repeatIcon.classList.add('repeat');
@@ -194,13 +190,13 @@ export default class Player {
     this.nextIcon.classList.add('next');
 
     // events
-    this.dandomIcon.addEventListener('click', this.toggleRandom.bind(this));
+    this.randomIcon.addEventListener('click', this.toggleRandom.bind(this));
     this.repeatIcon.addEventListener('click', this.toggleRepeat.bind(this));
     this.playIcon.addEventListener('click', this.togglePlay.bind(this));
     this.backIcon.addEventListener('click', this.toggleBack.bind(this));
     this.nextIcon.addEventListener('click', this.toggleNext.bind(this));
 
-    controls.appendChild(this.dandomIcon);
+    controls.appendChild(this.randomIcon);
     controls.appendChild(this.backIcon);
     controls.appendChild(this.playIcon);
     controls.appendChild(this.nextIcon);
@@ -234,11 +230,17 @@ export default class Player {
 
     // events
     row.addEventListener('change', this.timechanged.bind(this));
+    this.sliderElement.addEventListener('input', this.slideAction.bind(this));
 
     row.appendChild(colTime);
     row.appendChild(colSlider);
     row.appendChild(colDuration);
     return row;
+  }
+
+  slideAction() {
+    this.time = (this.sliderElement.value * this.audio.duration) / 100;
+    this.audio.currentTime = this.TIME;
   }
 
   load(songUrl) {
@@ -254,8 +256,13 @@ export default class Player {
   }
 
   togglePlay() {
-    if (this.playing) this.pause();
-    else this.play();
+    if (this.playing) {
+      this.pause();
+      this.playIcon.classList.remove('btn-active');
+    } else {
+      this.play();
+      this.playIcon.classList.add('btn-active');
+    }
   }
 
   toggleNext() {
@@ -300,6 +307,7 @@ export default class Player {
 
   timeupdate() {
     this.time = this.audio.currentTime;
+    console.log(this.audio.currentTime);
   }
 
   timechanged() {

@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
 
 body {
-  background: linear-gradient(0deg, rgba(34,193,195,1) 20%, rgba(191,187,123,1) 80%, rgba(253,187,45,1) 100%);
+  background: linear-gradient(0deg, #22c1c3 20%, #bfbb7b 80%, #fdbb2d 100%);;
 }
 
 header{
@@ -51,6 +51,13 @@ button {
   background-size: contain;
   background-repeat: no-repeat;
   overflow: hidden;
+  &:focus {
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
 }
 
 h3, h4{
@@ -65,7 +72,6 @@ h4, h3, p{
 p{
   font-size: 15px;
   font-family: 'Lato', sans-serif;
-  margin-top: 0%;
 }
 
 footer{
@@ -178,7 +184,7 @@ footer{
 }
 
 .song_cover{
-  background: linear-gradient(0deg, rgba(34,193,195,1) 20%, rgba(191,187,123,1) 80%, rgba(253,187,45,1) 100%);
+  background: linear-gradient(0deg, #22c1c3 20%, #bfbb7b 80%, #fdbb2d 100%);;
   position: relative;
   top: -100%;
   left: 0;
@@ -219,4 +225,77 @@ footer{
 .hide-player {
   top: 100%;
   transition: 1.5s;
+}
+
+.random-active {
+  background-image: url('../img/system/randomActive.png');
+}
+
+.repeat-active {
+  background-image: url('../img/system/repeatActive.png');
+}
+
+// slider 
+.slider {
+  position: relative;
+  width: 70%;
+}
+
+input[type='range'] {
+  display: block;
+  width: 100%;
+}
+
+input[type='range']:focus {
+  outline: none;
+}
+
+input[type='range'],
+input[type='range']::-webkit-slider-runnable-track,
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  background-color: #fdbb2d;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #fdbb2d;
+  border-radius: 50%;
+  margin-top: -9px;
+}
+
+input[type=range]::-moz-range-thumb {
+  background-color: #fdbb2d;
+  width: 15px;
+  height: 15px;
+  border: 3px solid #fdbb2d;
+  border-radius: 50%;
+}
+
+input[type=range]::-ms-thumb {
+  background-color: #fdbb2d;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #fdbb2d;
+  border-radius: 50%;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  background-color: #777;
+  height: 3px;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  outline: none;
+}
+
+input[type=range]::-moz-range-track {
+  background-color: #fdbb2d;
+  height: 3px;
+}
+
+input[type=range]::-ms-track {
+  background-color: #fdbb2d;
+  height: 3px;
 }
