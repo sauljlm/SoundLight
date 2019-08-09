@@ -199,9 +199,13 @@ export default class Player {
     return btnAdd;
   }
 
-  setSongActive() {
+  setSongActive(songSelected) {
     const songs = document.querySelectorAll('.song');
-    this.songSelected = this.singleton.getPlaying;
+    if (songSelected) {
+      this.songSelected = this.songSelected;
+    } else {
+      this.songSelected = this.singleton.getPlaying;
+    }
     songs.forEach((song, index) => {
       song.classList.remove('song-active');
       if (this.songSelected === index) {
@@ -226,31 +230,21 @@ export default class Player {
       row.appendChild(title);
       row.appendChild(this.btnAdd(songs[index]));
 
-      if (this.songSelected === index) {
-        row.classList.add('song-active');
-      }
-
-      row.addEventListener('click', (e) => {
+      row.addEventListener('click', () => {
         document.querySelectorAll('.song').forEach((element) => {
           element.classList.remove('song-active');
         });
-        row.classList.add('song-active');
-        this.setSongActive();
-        songs.forEach((element, i) => {
-          if (element.dataSong === e.target.getAttribute('dataSong')) {
-            this.songSelected = i;
-            this.arraySelected = 'songs';
-            this.time = 0;
-            this.load(this.singleton.getOne(this.songSelected));
-            if (this.playing === true) this.play();
-            this.render();
-          }
-        });
+        this.songSelected = index;
+        this.arraySelected = 'songs';
+        this.time = 0;
+        this.load(this.singleton.getOne(this.songSelected));
+        if (this.playing === true) this.play();
+        this.render();
+        this.setSongActive(this.songSelected);
       });
-
       container.appendChild(row);
+      this.setSongActive();
     });
-    this.setSongActive();
   }
 
   clear(container) { // eslint-disable-line
