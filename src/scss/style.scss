@@ -1,20 +1,85 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
-
+//General
 body {
   background: linear-gradient(0deg, #22c1c3 20%, #bfbb7b 80%, #fdbb2d 100%);
 }
+//Loading
+.loarding{
+  padding: 3%;
+}
+
+.logo{
+  @media (min-width: 500px){
+    width: 25%;
+    margin-left: 38%;
+    margin-top: 56%;
+  }
+  @media (min-width: 1200px){
+    width: 20%;
+    margin-left: 40%;
+    margin-top: 10%;
+  }
+  @media (min-width: 800px){
+    width: 20%;
+    margin-left: 40%;
+    margin-top: 25%;
+  }
+}
+
+.logo_title{
+  @media (min-width: 500px){
+    font-size: 38px;
+    margin-left: 29%;
+  }
+
+  @media (min-width: 800px){
+    font-size: 38px;
+    margin-left: 1%;
+  }
+
+  @media (min-width: 1200px){
+    font-size: 38px;
+    margin-left: 2%;
+  }
+}
 
 header{
-  background: rgb(220, 188, 87);
-  margin-top: -10%;
-  padding-bottom: 10px;
+  @media (min-width: 500px){
+    margin-top: -10%;
+    padding-bottom: 10px;
+  }
+
+  @media (min-width: 1200px){
+    margin-top: -3%;
+    padding-bottom: 10px;
+  }
+
+  @media (min-width: 800px){
+    margin-top: -4%;
+    padding-bottom: 10px;
+  }
+
 }
 
 h1{
-  color: white;
-  font-size: 75px;
-  font-family: 'Raleway', sans-serif;
+  @media (min-width: 500px){
+    color: white;
+    font-size: 75px;
+    font-family: 'Raleway', sans-serif;
+  }
+  @media (min-width: 800px){
+    color: white;
+    font-size: 54px;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+  }
+
+  @media (min-width: 1200px){
+    color: white;
+    font-size: 54px;
+    font-family: 'Raleway', sans-serif;
+  }
 }
 
 ul {
@@ -23,25 +88,62 @@ ul {
 }
 
 h2{
-  color:white;
-  font-size: 35px;
-  margin-left: 53%;
-  margin-top: -10%;
-  margin-bottom: 0;
-  font-family: 'Lato', sans-serif;
+  @media (min-width: 500px){ 
+    color:white;
+    font-size: 35px;
+    margin-left: 53%;
+    margin-top: -10%;
+    margin-bottom: 0;
+    font-family: 'Lato', sans-serif;
+  }
+
+  @media (min-width: 800px){ 
+    color: white;
+    font-size: 28px;
+    margin-left: 29%;
+    margin-top: -4%;
+    margin-bottom: 0;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+  }
+
+  @media (min-width: 1200px){ 
+    color:white;
+    font-size: 35px;
+    margin-top: -3%;
+    font-family: 'Lato', sans-serif;
+  }
+
 }
 
 li{
-  box-sizing: border-box;
-  list-style: none;
-  background: rgb(92, 196, 153);
-  width: 100%;
-  height: 40%;
-  padding: 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @media (min-width: 500px){
+    box-sizing: border-box;
+    list-style: none;
+    width: 100%;
+    height: 40%;
+    padding: 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @media (min-width: 800px){
+    box-sizing: border-box;
+    list-style: none;
+    width: 100%;
+    height: 51%;
+    padding: 2%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
 }
+
+//Modal styles
+
+
 
 button {
   width: 30px;
@@ -80,6 +182,7 @@ footer{
   align-items: center;
   justify-items: center;
   height: 10%;
+  background: linear-gradient(0deg, #22c1c3 -28%, #bfbb7b 111%, #fdbb2d 273%);
 }
 
 .container {
@@ -148,12 +251,12 @@ footer{
 
 .loarding {
   position: absolute;
-  width: 100%;
-  padding-bottom: 100%;
+  width: 94%;
+  padding-bottom: 125%;
   background: linear-gradient(0deg, #22c1c3 20%, #bfbb7b 80%, #fdbb2d 100%);
   z-index: 2;
 }
-
+   
 .hide-loarding {
   display: none;
 }
@@ -164,19 +267,31 @@ footer{
 }
 
 .active_song{
-  background:rgb(92, 196, 153);
+  background: linear-gradient(0deg,#fdbb2d -268% , #bfbb7b 85%,#22c1c3 211% );;
   width: 100%;
   height: 10%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border-top: 5px solid #499274;
   box-sizing: border-box;
 }
 
 .playlist_album{
-  width: 10%;
-  margin-top: 15px;
+  @media (min-width: 500px){
+    width: 10%;
+    margin-top: 15px;
+  }
+
+  @media (min-width: 800px){
+    width: 6%;
+    margin-top: 15px;
+  }
+
+  @media (min-width: 1200px){
+    width: 4%;
+    margin-top: 15px;
+  }
+
 }
 
 .start_soundlight{
@@ -213,9 +328,25 @@ footer{
 }
 
 .cover {
-  max-width: 100%;
-  width: 100%;
-  max-height: 100%;
+  @media (min-width: 500px){
+    max-width: 100%;
+    width: 100%;
+    max-height: 100%;
+  }
+
+  @media (min-width: 800px){
+    max-width: 100%;
+    width: 60%;
+    max-height: 100%;
+    margin-left: 19%;
+  }
+
+  @media (min-width: 1200px){
+    max-width: 42%;
+    width: 100%;
+    max-height: 100%;
+    margin-left: 28%;
+  }
 }
 
 .song_info {
@@ -241,6 +372,7 @@ footer{
 .hide-player {
   top: 100%;
   transition: 1.5s;
+  display: none;
 }
 
 .random-active {
@@ -250,6 +382,7 @@ footer{
 .repeat-active {
   background-image: url('../img/system/repeatActive.png');
 }
+
 
 // slider 
 .slider {
