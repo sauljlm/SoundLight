@@ -33,7 +33,13 @@ export default class Singleton {
     return this.DATA[random];
   }
 
-  getOne(random) {
+  getOne(index) {
+    let song = null;
+    song = this.DATA[index];
+    return song;
+  }
+
+  getRandom(random) {
     let song = null;
     if (random === true) {
       song = this.getRandomSong;

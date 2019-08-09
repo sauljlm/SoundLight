@@ -4,7 +4,7 @@
     "artist": "Aron Smith",
     "cover": "dancin.jpg",
     "mp3": "Aaron%20Smith%20-%20Dancin%20(KRONO%20Remix)",
-    "started": false,
+    "favorite": false,
     "dataSong": "Dancin"
   },
   {
@@ -12,7 +12,7 @@
     "artist": "Billie Eilish",
     "cover": "BoredCover.jpg",
     "mp3": "Bored",
-    "started": false,
+    "favorite": false,
     "dataSong": "Boret"
   },
   {
@@ -20,7 +20,7 @@
     "artist": "Post Malone",
     "cover": "rockstarCover.jpg",
     "mp3": "rockstar",
-    "started": false,
+    "favorite": false,
     "dataSong": "rockstar"
   },
   {
@@ -28,15 +28,15 @@
     "artist": "Billie Eilish",
     "cover": "oceanEyesCover.jpg",
     "mp3": "Ocean%20Eyes",
-    "started": false,
+    "favorite": false,
     "dataSong": "Ocean Eyes"
   },
   {
     "title": "On Melancholy Hill",
     "artist": "Gorillaz",
-    "cover": "OnMelancholy HillCover.jpg",
+    "cover": "OnMelancholy-HillCover.jpg",
     "mp3": "On%20Melancholy%20Hill",
-    "started": false,
+    "favorite": false,
     "dataSong": "On Melancholy Hill"
   },
   {
@@ -44,7 +44,7 @@
     "artist": "Imagine Dragons",
     "cover": "believerCover.jpg",
     "mp3": "Believer",
-    "started": false,
+    "favorite": false,
     "dataSong": "believer"
   },
   {
@@ -52,7 +52,7 @@
     "artist": "Coolio",
     "cover": "ganstaCover.jpg",
     "mp3": "gansta's%20paradice",
-    "started": false,
+    "favorite": false,
     "dataSong": "gangsta's paradise"
   },
   {
@@ -60,7 +60,7 @@
     "artist": "Gorillaz",
     "cover": "TranzCover.jpg",
     "mp3": "Tranz",
-    "started": false,
+    "favorite": false,
     "dataSong": "tranz"
   },
   {
@@ -68,7 +68,7 @@
     "artist": "Desiigner",
     "cover": "pandaCover.jpg",
     "mp3": "panda",
-    "started": false,
+    "favorite": false,
     "dataSong": "Panda"
   },
   {
@@ -76,7 +76,7 @@
     "artist": "Billie Eillish",
     "cover": "idontwannabeyouanymore.jpg",
     "mp3": "idontwannabeyouanymore",
-    "started": false,
+    "favorite": false,
     "dataSong": "idontwannabeyouanymore"
   },
   {
@@ -84,7 +84,7 @@
     "artist": "Billie Eillish",
     "cover": "hostageCover.jpg",
     "mp3": "hostage",
-    "started": false,
+    "favorite": false,
     "dataSong": "hostage"
   },
   {
@@ -92,7 +92,7 @@
     "artist": "Halsey",
     "cover": "withoutMeCover.jpg",
     "mp3": "Without%20Me",
-    "started": false,
+    "favorite": false,
     "dataSong": "Without Me"
   },
   {
@@ -100,7 +100,7 @@
     "artist": "Billie Eillish",
     "cover": "whenthepartysover.jpg",
     "mp3": "when%20the%20party's%20over",
-    "started": false,
+    "favorite": false,
     "dataSong": "when the party's over"
   },
   {
@@ -108,7 +108,7 @@
     "artist": "Ariana Grande",
     "cover": "arianagrande.jpg",
     "mp3": "Ariana%20Grande%20-%20bloodline%20(Audio)",
-    "started": false,
+    "favorite": false,
     "dataSong": "bloodline"
   },
   {
@@ -116,7 +116,7 @@
     "artist": "Drake",
     "cover": "drake.jpg",
     "mp3": "Chris%20Brown%20-%20No%20Guidance%20(Official%20Video)%20ft.%20Drake",
-    "started": false,
+    "favorite": false,
     "dataSong": "No guidance"
   },
   {
@@ -124,7 +124,7 @@
     "artist": "Daft Punk",
     "cover": "daftpunk.jpg",
     "mp3": "Daft%20Punk%20-%20Get%20Lucky%20(Official%20Audio)%20ft.%20Pharrell%20Williams,%20Nile%20Rodgers",
-    "started": false,
+    "favorite": false,
     "dataSong": "Get Lucky"
   },
   {
@@ -132,7 +132,7 @@
     "artist": "Drake",
     "cover": "drake.jpg",
     "mp3": "Drake%20-%20Hold%20On,%20We're%20Going%20Home",
-    "started": false,
+    "favorite": false,
     "dataSong": "We're Going Home"
   },
   {
@@ -140,7 +140,7 @@
     "artist": "Duke Dumont",
     "cover": "oceandrive.jpg",
     "mp3": "Duke%20Dumont%20-%20Ocean%20Drive%20(Official%20Music%20Video)",
-    "started": false,
+    "favorite": false,
     "dataSong": "Ocean Drive"
   },
   {
@@ -148,7 +148,7 @@
     "artist": "Eagles",
     "cover": "hotelcalifornia.jpg",
     "mp3": "Eagles%20-%20Hotel%20California%20(Lyrics)",
-    "started": false,
+    "favorite": false,
     "dataSong": "Hotel California"
   },
   {
@@ -156,7 +156,7 @@
     "artist": "Lionel Richie",
     "cover": "lionell.jpg",
     "mp3": "Lionel%20Richie%20All%20night%20Long",
-    "started": false,
+    "favorite": false,
     "dataSong": "All night Long"
   },
   {
@@ -164,7 +164,7 @@
     "artist": "Billie Eillish",
     "cover": "idontwannabeyouanymore.jpg",
     "mp3": "idontwannabeyouanymore",
-    "started": false,
+    "favorite": false,
     "dataSong": "idontwannabeyouanymore"
   },
   {
@@ -172,7 +172,7 @@
     "artist": "Michael Jackson",
     "cover": "saysaysay.jpg",
     "mp3": "MIchael%20Jackson%20&%20Paul%20McCartney%20Say%20Say%20Say%20Lyrics",
-    "started": false,
+    "favorite": false,
     "dataSong": "Say Say Say"
   },
   {
@@ -180,7 +180,7 @@
     "artist": "Michael Jackson",
     "cover": "michaeljackson.jpg",
     "mp3": "Michael%20Jackson%20-Thriller%20-%20Baby%20Be%20Mine",
-    "started": false,
+    "favorite": false,
     "dataSong": "Baby Be Mine"
   },
   {
@@ -188,7 +188,7 @@
     "artist": "Modjo",
     "cover": "modjo.jpg",
     "mp3": "Modjo%20-%20Lady%20(Hear%20Me%20Tonight)%20(Official%20Video)",
-    "started": false,
+    "favorite": false,
     "dataSong": "Lady hear me tonight"
   },
   {
@@ -196,7 +196,7 @@
     "artist": "Rosalía",
     "cover": "malamente.jpg",
     "mp3": "ROSALÍA%20-%20MALAMENTE%20(Cap.1%20Augurio)",
-    "started": false,
+    "favorite": false,
     "dataSong": "Malamente"
   }
 ]

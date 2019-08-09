@@ -126,7 +126,6 @@ li{
     display: flex;
     justify-content: space-between;
     align-items: center;
-
   @media (min-width: 768px){
     box-sizing: border-box;
     list-style: none;
@@ -137,13 +136,17 @@ li{
     justify-content: space-between;
     align-items: center;
   }
+}
 
+.song-active {
+  box-shadow: 2px 2px 10px #00000042;
+}
+
+.song:hover {
+  box-shadow: 2px 2px 10px #00000042;
 }
 
 //Modal styles
-
-
-
 button {
   width: 30px;
   height: 30px;
@@ -177,10 +180,9 @@ p{
 
 footer{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-items: center;
-  height: 29%;
+  justify-content: center;
   background: linear-gradient(0deg, #22c1c3 -28%, #bfbb7b 111%, #fdbb2d 273%);
 }
 
@@ -192,6 +194,15 @@ footer{
 
 #songs_container {
   height: 100vh;
+  display: grid;
+  grid-row: 4;
+  grid-template-columns: auto;
+  grid-template-rows: 15% 70% 7.5% 7.5%;
+  grid-template-areas: 
+    "header"
+    "list"
+    "player"
+    "footer";
 }
 
 .play, .play_button {
@@ -250,12 +261,18 @@ footer{
     align-items: center;
     margin-top: 1%;
   }
+}
 
-
+.show-player{
+  background-image: url('../img/system/showPlayer.png');
 }
 
 .favorite_button {
   background-image: url('../img/system/favorite.png');
+}
+
+.favorite_button_active {
+  background-image: url('../img/system/favoriteActive.png');
 }
 
 .player {
@@ -284,31 +301,37 @@ footer{
 .add_button{
   width: 30px;
   height: 30px;
+  background-image: url('../img/system/favorite.png');
+}
+
+.add_button-active{
+  width: 30px;
+  height: 30px;
+  background-image: url('../img/system/favoriteActive.png');
 }
 
 .active_song{
   background: linear-gradient(0deg,#fdbb2d -268% , #bfbb7b 85%,#22c1c3 211% );;
   width: 100%;
-  height: 10%;
   display: flex;
   justify-content: space-around;
   align-items: center;
   box-sizing: border-box;
+  .play, .play_button {
+    width: 30px;
+    height: 30px;
+  }
 }
 
 .playlist_album{
-    width: 15%;
-    margin-top: 30px;
- 
-
+  width: 30px;
+  margin: 0 10px;
   @media (min-width: 768px){
-    width: 6%;
-    margin-top: 30px;
+    width: 35px;
   }
 
   @media (min-width: 1024px){
-    width: 4%;
-    margin-top: 15px;
+    width: 40px;
   }
 }
 
@@ -400,8 +423,10 @@ footer{
 }
 
 .songs_list {
-  max-height: 60%;
   overflow:auto;
+  button {
+    overflow: visible;
+  }
 }
 
 .hide-player {
