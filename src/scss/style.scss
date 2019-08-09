@@ -10,15 +10,14 @@ body {
 }
 
 .logo{
-  @media (min-width: 500px){
-    width: 25%;
-    margin-left: 38%;
-    margin-top: 56%;
-  }
-  @media (min-width: 1200px){
-    width: 20%;
-    margin-left: 40%;
-    margin-top: 10%;
+    width: 55%;
+    margin-left: 22%;
+    margin-top: 80%;
+
+  @media (min-width: 768px){
+    width: 28%;
+    margin-left: 37%;
+    margin-top: 27%;
   }
   @media (min-width: 800px){
     width: 20%;
@@ -28,14 +27,13 @@ body {
 }
 
 .logo_title{
-  @media (min-width: 500px){
     font-size: 38px;
-    margin-left: 29%;
-  }
+    text-align: center;
 
-  @media (min-width: 800px){
+
+  @media (min-width: 768px){
     font-size: 38px;
-    margin-left: 1%;
+    margin-left: 2%;
   }
 
   @media (min-width: 1200px){
@@ -45,12 +43,11 @@ body {
 }
 
 header{
-  @media (min-width: 500px){
-    margin-top: -10%;
-    padding-bottom: 10px;
-  }
+  margin-top: -8%;
+  padding-bottom: 10px;
 
-  @media (min-width: 1200px){
+
+  @media (min-width: 768px){
     margin-top: -3%;
     padding-bottom: 10px;
   }
@@ -63,11 +60,11 @@ header{
 }
 
 h1{
-  @media (min-width: 500px){
     color: white;
-    font-size: 75px;
+    font-size: 41px;
     font-family: 'Raleway', sans-serif;
-  }
+    text-align: center;
+ 
   @media (min-width: 800px){
     color: white;
     font-size: 54px;
@@ -88,14 +85,13 @@ ul {
 }
 
 h2{
-  @media (min-width: 500px){ 
     color:white;
-    font-size: 35px;
-    margin-left: 53%;
-    margin-top: -10%;
+    font-size: 18px;
+    margin-left: 56%;
+    margin-top: -3%;
     margin-bottom: 0;
     font-family: 'Lato', sans-serif;
-  }
+
 
   @media (min-width: 800px){ 
     color: white;
@@ -117,16 +113,14 @@ h2{
 }
 
 li{
-  @media (min-width: 500px){
     box-sizing: border-box;
     list-style: none;
     width: 100%;
     height: 40%;
-    padding: 5%;
+    padding: 4%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
 
   @media (min-width: 800px){
     box-sizing: border-box;
@@ -164,7 +158,7 @@ button {
 
 h3, h4{
   font-family: 'Lato', sans-serif;
-  font-size: 22px;
+  font-size: 17px;
 }
 
 h4, h3, p{
@@ -181,7 +175,7 @@ footer{
   flex-direction: column;
   align-items: center;
   justify-items: center;
-  height: 10%;
+  height: 22%;
   background: linear-gradient(0deg, #22c1c3 -28%, #bfbb7b 111%, #fdbb2d 273%);
 }
 
@@ -236,6 +230,7 @@ footer{
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin-top: -2%;
 }
 
 .favorite_button {
@@ -277,10 +272,9 @@ footer{
 }
 
 .playlist_album{
-  @media (min-width: 500px){
     width: 10%;
-    margin-top: 15px;
-  }
+    margin-top: 30px;
+ 
 
   @media (min-width: 800px){
     width: 6%;
@@ -328,11 +322,12 @@ footer{
 }
 
 .cover {
-  @media (min-width: 500px){
     max-width: 100%;
-    width: 100%;
+    width: 47%;
     max-height: 100%;
-  }
+    margin-top: 0%;
+    margin-left: 28%;
+  
 
   @media (min-width: 800px){
     max-width: 100%;
@@ -341,17 +336,18 @@ footer{
     margin-left: 19%;
   }
 
-  @media (min-width: 1200px){
+  @media (min-width: 1024px){
     max-width: 42%;
-    width: 100%;
+    width: 47%;
     max-height: 100%;
-    margin-left: 28%;
+    margin-left: 27%;
   }
 }
 
 .song_info {
   grid-area: info;
   align-self: center;
+  margin-top: -1%;
 }
 
 .song_name{
