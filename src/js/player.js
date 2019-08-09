@@ -21,6 +21,7 @@ export default class Player {
     this.repeatIcon = null;
     this.timeElement = null;
     this.sliderElement = null;
+    this.sliderLabel = null;
     this.durationElement = null;
 
     // values
@@ -51,6 +52,9 @@ export default class Player {
 
     this.audio.addEventListener('timeupdate', () => {
       this.timeupdate();
+    });
+    this.btnClose.addEventListener('click', () => {
+      this.contPlayer.classList.toggle('hide-player');
     });
   }
 
@@ -150,11 +154,9 @@ export default class Player {
 
   render() {
     this.contCover.setAttribute('src', `img/covers/${this.songData.cover}`);
+    this.contCover.setAttribute('alt', `cover of ${this.songData.title}`);
     this.contName.innerHTML = `${this.songData.title}`;
     this.contArtist.innerHTML = `${this.songData.artist}`;
-    this.btnClose.addEventListener('click', () => {
-      this.contPlayer.classList.toggle('hide-player');
-    });
   }
 
   renderPlayer() {
@@ -175,18 +177,23 @@ export default class Player {
     // this.mutedIcon.classList.add('mute');
     this.randomIcon = document.createElement('button');
     this.randomIcon.classList.add('random');
+    this.randomIcon.setAttribute('aria-label', 'button-random');
 
     this.repeatIcon = document.createElement('button');
     this.repeatIcon.classList.add('repeat');
+    this.repeatIcon.setAttribute('aria-label', 'button-repeat');
 
     this.playIcon = document.createElement('button');
     this.playIcon.classList.add('play');
+    this.playIcon.setAttribute('aria-label', 'button-play');
 
     this.backIcon = document.createElement('button');
     this.backIcon.classList.add('back');
+    this.backIcon.setAttribute('aria-label', 'button-back');
 
     this.nextIcon = document.createElement('button');
     this.nextIcon.classList.add('next');
+    this.nextIcon.setAttribute('aria-label', 'button-next');
 
     // events
     this.randomIcon.addEventListener('click', this.toggleRandom.bind(this));
@@ -215,11 +222,21 @@ export default class Player {
     const colSlider = document.createElement('div');
     colSlider.classList.add('slider');
     this.sliderElement = document.createElement('input');
+    this.sliderLabel = document.createElement('label');
+
+    this.sliderLabel.innerHTML = 'slider bar';
+
+    this.sliderLabel.setAttribute('class', 'sr-only');
+    this.sliderLabel.setAttribute('for', 'slider-bar');
+    this.sliderElement.setAttribute('name', 'slider-bar');
+    this.sliderElement.setAttribute('id', 'slider-bar');
+
     this.sliderElement.type = 'range';
     this.sliderElement.disabled = true;
     this.sliderElement.min = 0;
     this.sliderElement.max = 100;
     this.sliderElement.value = 0;
+    colSlider.appendChild(this.sliderLabel);
     colSlider.appendChild(this.sliderElement);
 
     const colDuration = document.createElement('div');
@@ -251,7 +268,7 @@ export default class Player {
   }
 
   toggleRandom() {
-    this.random = !this.random;
+    this.random = !this.RANDOM;
   }
 
   togglePlay() {
