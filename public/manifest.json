@@ -3,8 +3,8 @@
   "name": "Sound Light",
   "icons": [
     {
-      "src": "img/logo.png",
-      "sizes": "100x100",
+      "src": "/img/logo.png",
+      "sizes": "144x144",
       "type": "image/png"
     }
   ],
