@@ -238,7 +238,8 @@ export default class Player {
         this.arraySelected = 'songs';
         this.time = 0;
         this.load(this.singleton.getOne(this.songSelected));
-        if (this.playing === true) this.play();
+        this.play();
+        this.contActivePlay.classList.add('btn-active');
         this.render();
         this.setSongActive(this.songSelected);
       });
