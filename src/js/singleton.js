@@ -2,6 +2,7 @@ let instance = null;
 export default class Singleton {
   constructor() {
     this.DATA = null;
+    this.playList = [];
     this.getJson();
     this.playing = 0;
 

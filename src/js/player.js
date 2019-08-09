@@ -175,7 +175,7 @@ export default class Player {
   }
 
   addSong() {
-    console.log(this.songSelected);
+    console.log(this.songSelected); // eslint-disable-line
   }
 
   btnAdd(song) {
@@ -188,10 +188,10 @@ export default class Player {
     btnAdd.addEventListener('click', () => {
       if (song.favorite === true) {
         this.singleton.setFavorite = false;
-        song.favorite = false;
+        song.favorite = false; // eslint-disable-line
         btnAdd.classList.remove('add_button-active');
       } else {
-        song.favorite = true;
+        song.favorite = true; // eslint-disable-line
         btnAdd.classList.add('add_button-active');
       }
       this.addSong();
