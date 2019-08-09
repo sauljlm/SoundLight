@@ -306,7 +306,6 @@ export default class Player {
 
   timeupdate() {
     this.time = this.audio.currentTime;
-    console.log(this.audio.currentTime);
   }
 
   timechanged() {
