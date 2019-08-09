@@ -7,9 +7,8 @@ import '../scss/style.scss';
 // Register service worker.
 import './registerServiceWorker';
 
-const cont = document.querySelector('#songs_container');
-const singleton = new Singleton();
-let loarding = document.querySelector('.loarding');
+const singleton = new Singleton(); // eslint-disable-line
+const loarding = document.querySelector('.loarding');
 let player = null;
 
 function showLoarding() {
