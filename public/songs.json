@@ -10,7 +10,7 @@
   {
     "title": "Boret",
     "artist": "Billie Eilish",
-    "cover": "BoredCover.png",
+    "cover": "BoredCover.jpg",
     "mp3": "Bored",
     "started": false,
     "dataSong": "Boret"
@@ -26,7 +26,7 @@
   {
     "title": "Ocean Eyes",
     "artist": "Billie Eilish",
-    "cover": "oceanEyesCover.png",
+    "cover": "oceanEyesCover.jpg",
     "mp3": "Ocean%20Eyes",
     "started": false,
     "dataSong": "Ocean Eyes"
@@ -58,7 +58,7 @@
   {
     "title": "tranz",
     "artist": "Gorillaz",
-    "cover": "TranzCover.jpeg",
+    "cover": "TranzCover.jpg",
     "mp3": "Tranz",
     "started": false,
     "dataSong": "tranz"
