@@ -69,6 +69,8 @@ export default class Player {
     this.btnShowPlayer.addEventListener('click', () => {
       this.contPlayer.classList.toggle('hide-player');
     });
+
+    this.contActivePlay.addEventListener('click', this.togglePlay.bind(this));
   }
 
   get loaded() {
@@ -202,7 +204,8 @@ export default class Player {
   setSongActive(songSelected) {
     const songs = document.querySelectorAll('.song');
     if (songSelected) {
-      this.songSelected = this.songSelected;
+      this.singleton.setPlaying = songSelected;
+      this.songSelected = songSelected;
     } else {
       this.songSelected = this.singleton.getPlaying;
     }
@@ -258,7 +261,6 @@ export default class Player {
     this.contName.innerHTML = `${this.songData.title}`;
     this.contActiveName.innerHTML = `${this.songData.title}`;
     this.contArtist.innerHTML = `${this.songData.artist}`;
-    this.contActivePlay.addEventListener('click', this.togglePlay.bind(this));
   }
 
   renderPlayer() {

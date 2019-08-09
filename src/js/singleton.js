@@ -24,6 +24,10 @@ export default class Singleton {
     return this.playing;
   }
 
+  set setPlaying(value) {
+    this.playing = value;
+  }
+
   get getSongs() {
     return this.DATA;
   }
