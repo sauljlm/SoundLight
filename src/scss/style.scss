@@ -3,33 +3,39 @@
 //General
 body {
   background: linear-gradient(0deg, #22c1c3 20%, #bfbb7b 80%, #fdbb2d 100%);
+  max-height: 100vh;
+  overflow: hidden;
 }
 //Loading
 .loarding{
   padding: 3%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .logo{
     width: 55%;
-    margin-left: 22%;
-    margin-top: 80%;
 
   @media (min-width: 768px){
     width: 28%;
+<<<<<<< HEAD
     margin-left: 39%;
     margin-top: 19%;
+=======
+>>>>>>> 18fbcf08963cc1707ad2d44c420b4866d201d9f2
   }
   @media (min-width: 1024px){
     width: 20%;
-    margin-left: 40%;
-    margin-top: 25%;
   }
 }
 
 .logo_title{
     font-size: 38px;
     text-align: center;
-
+    display: inline;
 
   @media (min-width: 768px){
     font-size: 38px;
@@ -43,17 +49,19 @@ body {
 }
 
 header{
-  margin-top: -8%;
   padding-bottom: 10px;
 
 
   @media (min-width: 768px){
-    margin-top: -3%;
     padding-bottom: 10px;
   }
 
+<<<<<<< HEAD
   @media (min-width: 1024px){
     margin-top: -4%;
+=======
+  @media (min-width: 800px){
+>>>>>>> 18fbcf08963cc1707ad2d44c420b4866d201d9f2
     padding-bottom: 10px;
   }
 
@@ -153,7 +161,7 @@ button {
     box-shadow: none;
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
-}
+  }
 }
 
 h3, h4{
@@ -254,11 +262,15 @@ footer{
   background-image: url('../img/system/favorite.png');
 }
 
+.player {
+  align-self: center;
+}
+
 .controls {
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
-  height: 20vh;
+  margin-top: 5%;
 }
 
 .loarding {
@@ -268,7 +280,7 @@ footer{
   background: linear-gradient(0deg, #22c1c3 20%, #bfbb7b 80%, #fdbb2d 100%);
   z-index: 2;
 }
-   
+
 .hide-loarding {
   display: none;
 }
@@ -338,6 +350,7 @@ footer{
 }
 
 .cover {
+<<<<<<< HEAD
     max-width: 100%;
     width: 84%;
     max-height: 100%;
@@ -345,6 +358,14 @@ footer{
     margin-left: 9%;
   
   @media (min-width: 768px){
+=======
+  max-width: 100%;
+  width: 100%;
+  max-height: 100%; 
+  margin-top: 0;
+  
+  @media (min-width: 800px){
+>>>>>>> 18fbcf08963cc1707ad2d44c420b4866d201d9f2
     max-width: 100%;
     width: 60%;
     max-height: 100%;
@@ -394,9 +415,8 @@ footer{
 }
 
 .hide-player {
-  top: 100%;
-  transition: 1.5s;
-  display: none;
+  top: 150%;
+  transition: 2s;
 }
 
 .random-active {
