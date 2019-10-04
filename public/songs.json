@@ -330,7 +330,7 @@
   {
     "title": "Es epico",
     "artist": "Cancerbero",
-    "cover": "Cancerbero.jpg",
+    "cover": "cancerbero.jpg",
     "mp3": "Es%20Épico",
     "favorite": false,
     "dataSong": "Esepico"
@@ -338,16 +338,16 @@
   {
     "title": "Mundo de piedra",
     "artist": "Cancerbero",
-    "cover": "Cancerbero.jpg",
-    "mp3": "mundodepiedra",
+    "cover": "cancerbero.jpg",
+    "mp3": "Mundo%20de%20Piedra",
     "favorite": false,
     "dataSong": "mundodepiedra"
   },
   {
     "title": "Maquiavelico",
     "artist": "Cancerbero",
-    "cover": "Cancerbero.jpg",
-    "mp3": "Maquiavelico",
+    "cover": "cancerbero.jpg",
+    "mp3": "Maquiavélico",
     "favorite": false,
     "dataSong": "Maquiavelico"
   },
@@ -370,7 +370,7 @@
   {
     "title": "Jeremías 17_5",
     "artist": "Cancerbero",
-    "cover": "Cancerbero.jpg",
+    "cover": "cancerbero.jpg",
     "mp3": "Jeremías%2017_5",
     "favorite": false,
     "dataSong": "Jeremias17_5"
@@ -394,18 +394,18 @@
   {
     "title": "Clocks",
     "artist": "Cold play",
-    "cover": "coldplay.png",
+    "cover": "coldplay.jpg",
     "mp3": "Clocks",
     "favorite": false,
     "dataSong": "CheapThrills"
   },
   {
-    "title": "Eatside",
+    "title": "Eastide",
     "artist": "Helsey",
-    "cover": "Eatside.png",
-    "mp3": "Eatside",
+    "cover": "Eastside.png",
+    "mp3": "Eastide",
     "favorite": false,
-    "dataSong": "Eatside"
+    "dataSong": "Eastide"
   },
   {
     "title": "Boret",
@@ -506,8 +506,8 @@
   {
     "title": "Get Lucky",
     "artist": "Daft Punk",
-    "cover": "daftpunk.jpg",
-    "mp3": "Daft%20Punk%20-%20Get%20Lucky%20(Official%20Audio)%20ft.%20Pharrell%20Williams,%20Nile%20Rodgers",
+    "cover": "getlucky.jpg",
+    "mp3": "Get%20Lucky",
     "favorite": false,
     "dataSong": "Get Lucky"
   },
@@ -515,16 +515,8 @@
     "title": "Hotel California",
     "artist": "Eagles",
     "cover": "hotelcalifornia.jpg",
-    "mp3": "Eagles%20-%20Hotel%20California%20(Lyrics)",
+    "mp3": "Hotel%20California",
     "favorite": false,
     "dataSong": "Hotel California"
-  },
-  {
-    "title": "i dont wannabe you any more",
-    "artist": "Billie Eillish",
-    "cover": "idontwannabeyouanymore.jpg",
-    "mp3": "idontwannabeyouanymore",
-    "favorite": false,
-    "dataSong": "idontwannabeyouanymore"
   }
 ]

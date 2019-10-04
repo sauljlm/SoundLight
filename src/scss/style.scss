@@ -18,42 +18,6 @@ body {
   border: 0;
 }
 
-//Loading
-.loarding{
-  padding: 3%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.logo{
-    width: 55%;
-  @media (min-width: 768px){
-    width: 28%;
-  }
-  @media (min-width: 1024px){
-    width: 20%;
-  }
-}
-
-.logo_title{
-    font-size: 38px;
-    text-align: center;
-    display: inline;
-
-  @media (min-width: 768px){
-    font-size: 38px;
-    margin-left: 2%;
-  }
-
-  @media (min-width: 1024px){
-    font-size: 38px;
-    margin-left: 2%;
-  }
-}
-
 header{
   padding-bottom: 10px;
 
@@ -93,12 +57,11 @@ ul {
 }
 
 h2{
-    color:white;
-    font-size: 18px;
-    margin-left: 56%;
-    margin-bottom: 0;
-    font-family: 'Lato', sans-serif;
-
+  color:white;
+  font-size: 18px;
+  margin-left: 56%;
+  margin-bottom: 0;
+  font-family: 'Lato', sans-serif;
 
   @media (min-width: 768px){ 
     color: white;
@@ -118,19 +81,18 @@ h2{
 }
 
 li{
-    box-sizing: border-box;
-    list-style: none;
-    width: 100%;
-    height: 40%;
-    padding: 4%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  box-sizing: border-box;
+  list-style: none;
+  width: 100%;
+  padding: 4%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   @media (min-width: 768px){
     box-sizing: border-box;
     list-style: none;
     width: 100%;
-    height: 51%;
     padding: 2%;
     display: flex;
     justify-content: space-between;
@@ -360,10 +322,10 @@ footer{
     "player";
 }
 
-.song_coverimage{
+.song_image{
   display: flex;
   align-items: center;
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   background-size: cover;
 }
@@ -506,4 +468,10 @@ input[type=range]::-moz-range-track {
 input[type=range]::-ms-track {
   background-color: #fdbb2d;
   height: 3px;
+}
+
+
+.btn-play-list {
+  width: 100%;
+  height: 100%;
 }

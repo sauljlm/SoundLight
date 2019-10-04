@@ -5,6 +5,7 @@ export default class Singleton {
     this.playList = [];
     this.getJson();
     this.playing = 0;
+    this.viewPlayList = false;
 
     if (!instance) {
       instance = this;
@@ -20,6 +21,14 @@ export default class Singleton {
       });
   }
 
+  set setViewPlayList(value) {
+    this.viewPlayList = value;
+  }
+
+  get getViewPlayList() {
+    return this.viewPlayList;
+  }
+
   get getPlaying() {
     return this.playing;
   }
@@ -30,6 +39,18 @@ export default class Singleton {
 
   get getSongs() {
     return this.DATA;
+  }
+
+  get getPlayList() {
+    return this.playList;
+  }
+
+  set setFavorite(index) {
+    if (this.viewPlayList) {
+      this.playList[index].favorite = !this.playList[index].favorite;
+    } else {
+      this.DATA[index].favorite = !this.DATA[index].favorite;
+    }
   }
 
   get getRandomSong() {
@@ -74,5 +95,18 @@ export default class Singleton {
       this.playing = back;
     }
     return song;
+  }
+
+  emptyPlaylist() {
+    this.playList = [];
+  }
+
+  generatePlayList() {
+    this.emptyPlaylist();
+    this.DATA.forEach((element) => {
+      if (element.favorite) {
+        this.playList.push(element);
+      }
+    });
   }
 }

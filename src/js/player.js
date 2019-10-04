@@ -176,28 +176,39 @@ export default class Player {
     this.contSongs.appendChild(container);
   }
 
-  addSong() {
-    console.log(this.songSelected); // eslint-disable-line
-  }
-
-  btnAdd(song) {
+  btnAdd(song, index) { // eslint-disable-line
     const btnAdd = document.createElement('button');
 
-    if (song.favorite === true) btnAdd.classList.add('add_button-active');
+    if (song.favorite) {
+      btnAdd.classList.add('add_button-active');
+    }
+
     btnAdd.setAttribute('class', 'add_button');
     btnAdd.setAttribute('aria-label', 'btn add to playlist');
 
     btnAdd.addEventListener('click', () => {
-      if (song.favorite === true) {
-        this.singleton.setFavorite = false;
-        song.favorite = false; // eslint-disable-line
-        btnAdd.classList.remove('add_button-active');
-      } else {
-        song.favorite = true; // eslint-disable-line
+      this.singleton.setFavorite = index;
+      console.log(song.favorite);
+      if (song.favorite) {
         btnAdd.classList.add('add_button-active');
+      } else {
+        btnAdd.classList.remove('add_button-active');
       }
-      this.addSong();
     });
+    // btnAdd.addEventListener('click', () => {
+    //   console.log(this.singleton.getViewPlayList);
+    //   if (this.singleton.getViewPlayList) {
+    //     btnAdd.classList.add('add_button-active');
+    //     btnAdd.addEventListener('click', () => {
+    //       this.singleton.setFavorite = index;
+    //     });
+    //   } else {
+    //     console.log(song.favorite);
+    //     this.singleton.setFavorite = index;
+    //     btnAdd.classList.toggle('add_button-active');
+    //   }
+    // });
+
     return btnAdd;
   }
 
@@ -218,7 +229,14 @@ export default class Player {
   }
 
   composeList(container = this.contSongs) {
-    const songs = this.singleton.getSongs;
+    let songs = null;
+
+    if (this.singleton.getViewPlayList) {
+      songs = this.singleton.getPlayList;
+    } else {
+      songs = this.singleton.getSongs;
+    }
+
     this.clear(container);
 
     songs.forEach((song, index) => {
@@ -231,7 +249,7 @@ export default class Player {
       title.innerHTML = `${song.title} - ${song.artist}`;
 
       row.appendChild(title);
-      row.appendChild(this.btnAdd(songs[index]));
+      row.appendChild(this.btnAdd(songs[index], index));
 
       row.addEventListener('click', () => {
         document.querySelectorAll('.song').forEach((element) => {
