@@ -1,11 +1,411 @@
 [
   {
-    "title": "Dancin",
-    "artist": "Aron Smith",
-    "cover": "dancin.jpg",
-    "mp3": "Aaron%20Smith%20-%20Dancin%20(KRONO%20Remix)",
+    "title": "2002",
+    "artist": "Anne Marie",
+    "cover": "2002.jpeg",
+    "mp3": "2002",
     "favorite": false,
-    "dataSong": "Dancin"
+    "dataSong": "2002"
+  },
+  {
+    "title": "Another Brick in the wall",
+    "artist": "pink floid",
+    "cover": "AnotherBrick.jpg",
+    "mp3": "Another%20Brick%20in%20the%20Wall",
+    "favorite": false,
+    "dataSong": "AnotherBrick"
+  },
+  {
+    "title": "Wish you were here",
+    "artist": "pink floid",
+    "cover": "Wishyouwerehere.jpg",
+    "mp3": "Wish%20You%20Were%20Here",
+    "favorite": false,
+    "dataSong": "Wishyouwerehere"
+  },
+  {
+    "title": "Sail",
+    "artist": "AWOLNATION",
+    "cover": "sail.jpg",
+    "mp3": "Sail",
+    "favorite": false,
+    "dataSong": "sail"
+  },
+  {
+    "title": "She will be loved",
+    "artist": "Maroon 5",
+    "cover": "shewillbeloved.jpg",
+    "mp3": "She%20Will%20Be%20Loved",
+    "favorite": false,
+    "dataSong": "shewillbeloved"
+  },
+  {
+    "title": "Snow (Hey Oh)",
+    "artist": "Red Hot Chili Peppers",
+    "cover": "snow(heoh).jpg",
+    "mp3": "snow(Hey%20oh)",
+    "favorite": false,
+    "dataSong": "snow(heoh)"
+  },
+  {
+    "title": "Stolen Dance",
+    "artist": "Mylky Chance",
+    "cover": "stolendance.jpg",
+    "mp3": "Stolen%20Dance",
+    "favorite": false,
+    "dataSong": "stolendance"
+  },
+  {
+    "title": "Thunderclouds",
+    "artist": "Sia",
+    "cover": "thunderclouds.jpg",
+    "mp3": "Thunderclouds",
+    "favorite": false,
+    "dataSong": "thunderclouds"
+  },
+  {
+    "title": "Thunderstruck",
+    "artist": "AC-DC",
+    "cover": "thunderstruck.jpg",
+    "mp3": "Thunderstruck",
+    "favorite": false,
+    "dataSong": "thunderstruck"
+  },
+  {
+    "title": "Tu Arca",
+    "artist": "Ghettox",
+    "cover": "tuArca.jpg",
+    "mp3": "Banton%20&%20Guetto%20-%20Tu%20arca",
+    "favorite": false,
+    "dataSong": "tuArca"
+  },
+  {
+    "title": "Zombie",
+    "artist": "The Cranberries",
+    "cover": "zombie.jpg",
+    "mp3": "Zombie",
+    "favorite": false,
+    "dataSong": "zombie"
+  },
+  {
+    "title": "Vibra Positiva",
+    "artist": "Zona Ganjah",
+    "cover": "vibrapositiva.jpg",
+    "mp3": "Vibra%20Positiva",
+    "favorite": false,
+    "dataSong": "vibrapositiva"
+  },
+  {
+    "title": "Y mi corazon contento",
+    "artist": "Zona Ganjah",
+    "cover": "vibrapositiva.jpg",
+    "mp3": "Y%20mi%20corazon%20contento%20Zona%20Ganjah.%20HD%20HQ%20Y%203D",
+    "favorite": false,
+    "dataSong": "ymicoorazoncontento"
+  },
+  {
+    "title": "Yo soy tu maestro",
+    "artist": "El rookie",
+    "cover": "yosoytumaestro.jpg",
+    "mp3": "yo%20soy%20tu%20maesrto",
+    "favorite": false,
+    "dataSong": "yosoytumaestro"
+  },
+  {
+    "title": "Lady hear me tonmight",
+    "artist": "Modjo",
+    "cover": "lady-hearmetonight.jpg",
+    "mp3": "lady-%20hear%20me%20tonight",
+    "favorite": false,
+    "dataSong": "lady-hearmetonight"
+  },
+  {
+    "title": "Old and road",
+    "artist": "Lil Nax x",
+    "cover": "oldandroad.jpeg",
+    "mp3": "Old%20Town%20Road",
+    "favorite": false,
+    "dataSong": "oldandroad"
+  },
+  {
+    "title": "Pasame la Botella",
+    "artist": "Lil Nax x",
+    "cover": "pasamelabotella.jpg",
+    "mp3": "Pasame%20la%20botella",
+    "favorite": false,
+    "dataSong": "pasamelabotella"
+  },
+  {
+    "title": "Payphone",
+    "artist": "Maroon 5",
+    "cover": "pyphone.jpg",
+    "mp3": "Payphone",
+    "favorite": false,
+    "dataSong": "Payphone"
+  },
+  {
+    "title": "Perfect",
+    "artist": "Ed Sheeran 5",
+    "cover": "perfect.jpg",
+    "mp3": "Perfect",
+    "favorite": false,
+    "dataSong": "perfect"
+  },
+  {
+    "title": "Psycho",
+    "artist": "Post Malone",
+    "cover": "pshycho.jpg",
+    "mp3": "Psycho",
+    "favorite": false,
+    "dataSong": "psycho"
+  },
+  {
+    "title": "Let you down",
+    "artist": "NF",
+    "cover": "letyoudown.jpg",
+    "mp3": "Let%20You%20Down",
+    "favorite": false,
+    "dataSong": "letyoudown"
+  },
+  {
+    "title": "Limon y sal",
+    "artist": "Julieta Venegas",
+    "cover": "limonysal.jpg",
+    "mp3": "Limón%20y%20Sal",
+    "favorite": false,
+    "dataSong": "limonysal"
+  },
+  {
+    "title": "Lucid dreams",
+    "artist": "Juice WLRD",
+    "cover": "luciddreams.jpg",
+    "mp3": "Lucid%20Dreams",
+    "favorite": false,
+    "dataSong": "luciddreams"
+  },
+  {
+    "title": "Atreve-te-te",
+    "artist": "calle 13",
+    "cover": "atrevetete.jpg",
+    "mp3": "AtréveteTeTe",
+    "favorite": false,
+    "dataSong": "atrevetete"
+  },
+  {
+    "title": "Muerte en Hawaii",
+    "artist": "calle 13",
+    "cover": "calle13.jpg",
+    "mp3": "Muerte%20En%20Hawaii",
+    "favorite": false,
+    "dataSong": "muerteenhawaii"
+  },
+  {
+    "title": "No hay nadie como tu",
+    "artist": "calle 13",
+    "cover": "calle13.jpg",
+    "mp3": "No%20Hay%20Nadie%20Como%20Tu",
+    "favorite": false,
+    "dataSong": "nohaynadiecomotu"
+  },
+  {
+    "title": "Ojos color sol",
+    "artist": "calle 13",
+    "cover": "calle13.jpg",
+    "mp3": "Ojos%20Color%20Sol",
+    "favorite": false,
+    "dataSong": "ojoscolorsol"
+  },
+  {
+    "title": "El aguante",
+    "artist": "calle 13",
+    "cover": "calle13.jpg",
+    "mp3": "El%20Aguante",
+    "favorite": false,
+    "dataSong": "Elaguante"
+  },
+  {
+    "title": "La vuelta al mundo",
+    "artist": "calle 13",
+    "cover": "calle13.jpg",
+    "mp3": "La%20Vuelta%20Al%20Mundo",
+    "favorite": false,
+    "dataSong": "lavueltaalmundo"
+  },
+  {
+    "title": "Ella y Yo",
+    "artist": "Dom Omar",
+    "cover": "ellayyo.jpg",
+    "mp3": "Ella%20Y%20Yo",
+    "favorite": false,
+    "dataSong": "Ellayyo"
+  },
+  {
+    "title": "Foster the People",
+    "artist": "Pumped up",
+    "cover": "fosterthepeople.jpg",
+    "mp3": "Foster%20The%20People",
+    "favorite": false,
+    "dataSong": "fosterthepeople"
+  },
+  {
+    "title": "Friends",
+    "artist": "Marshmellow",
+    "cover": "friends.jpg",
+    "mp3": "Friends",
+    "favorite": false,
+    "dataSong": "friends"
+  },
+  {
+    "title": "Gasoline",
+    "artist": "Helsey",
+    "cover": "gasoline.jpg",
+    "mp3": "Gasoline",
+    "favorite": false,
+    "dataSong": "gasoline"
+  },
+  {
+    "title": "Me Rehuso",
+    "artist": "Danny Ocean",
+    "cover": "merehuso.jpg",
+    "mp3": "Me%20Rehúso",
+    "favorite": false,
+    "dataSong": "merehuso"
+  },
+  {
+    "title": "Me tienes que olvidar",
+    "artist": "El Roocky",
+    "cover": "metienesqueolvidar.jpg",
+    "mp3": "Me%20Tienes%20Que%20Olvidar",
+    "favorite": false,
+    "dataSong": "metienesqueolvidar"
+  },
+  {
+    "title": "Mis ojos llovar por ti",
+    "artist": "Big Boy",
+    "cover": "misojoslloranporti.jpg",
+    "mp3": "Mis%20Ojos%20Lloran%20Por%20Ti",
+    "favorite": false,
+    "dataSong": "misojoslloranporti"
+  },
+  {
+    "title": "More than you know",
+    "artist": "Axwell",
+    "cover": "morethanyouknow.jpg",
+    "mp3": "More%20Than%20You%20Know",
+    "favorite": false,
+    "dataSong": "morethanyouknow"
+  },
+  {
+    "title": "Get Lucky",
+    "artist": "Daft Punk",
+    "cover": "getlucky.jpg",
+    "mp3": "Get%20Lucky",
+    "favorite": false,
+    "dataSong": "GetLucky"
+  },
+  {
+    "title": "Gloria",
+    "artist": "The Lumineers",
+    "cover": "gloria.jpg",
+    "mp3": "Gloria",
+    "favorite": false,
+    "dataSong": "gloria"
+  },
+  {
+    "title": "Hasta la raiz",
+    "artist": "Natalia Lafourcade",
+    "cover": "hastalaraiz.jpg",
+    "mp3": "Hasta%20la%20Raíz",
+    "favorite": false,
+    "dataSong": "hastalaraiz"
+  },
+  {
+    "title": "No Games",
+    "artist": "Serani",
+    "cover": "nogames.jpg",
+    "mp3": "No%20Games",
+    "favorite": false,
+    "dataSong": "nogames"
+  },
+  {
+    "title": "Es epico",
+    "artist": "Cancerbero",
+    "cover": "Cancerbero.jpg",
+    "mp3": "Es%20Épico",
+    "favorite": false,
+    "dataSong": "Esepico"
+  },
+  {
+    "title": "Mundo de piedra",
+    "artist": "Cancerbero",
+    "cover": "Cancerbero.jpg",
+    "mp3": "mundodepiedra",
+    "favorite": false,
+    "dataSong": "mundodepiedra"
+  },
+  {
+    "title": "Maquiavelico",
+    "artist": "Cancerbero",
+    "cover": "Cancerbero.jpg",
+    "mp3": "Maquiavelico",
+    "favorite": false,
+    "dataSong": "Maquiavelico"
+  },
+  {
+    "title": "Better now",
+    "artist": "rockstar",
+    "cover": "rockstarCover.jpg",
+    "mp3": "Better%20Now",
+    "favorite": false,
+    "dataSong": "Betternow"
+  },
+  {
+    "title": "Human",
+    "artist": "rockstar",
+    "cover": "human.jpg",
+    "mp3": "Human",
+    "favorite": false,
+    "dataSong": "human"
+  },
+  {
+    "title": "Jeremías 17_5",
+    "artist": "Cancerbero",
+    "cover": "Cancerbero.jpg",
+    "mp3": "Jeremías%2017_5",
+    "favorite": false,
+    "dataSong": "Jeremias17_5"
+  },
+  {
+    "title": "La flaca",
+    "artist": "Jarabe de palo",
+    "cover": "laflaca.jpg",
+    "mp3": "La%20Flaca",
+    "favorite": false,
+    "dataSong": "laflaca"
+  },
+  {
+    "title": "Cheap Thrills",
+    "artist": "sia",
+    "cover": "sia.png",
+    "mp3": "Cheap%20Thrills",
+    "favorite": false,
+    "dataSong": "CheapThrills"
+  },
+  {
+    "title": "Clocks",
+    "artist": "Cold play",
+    "cover": "coldplay.png",
+    "mp3": "Clocks",
+    "favorite": false,
+    "dataSong": "CheapThrills"
+  },
+  {
+    "title": "Eatside",
+    "artist": "Helsey",
+    "cover": "Eatside.png",
+    "mp3": "Eatside",
+    "favorite": false,
+    "dataSong": "Eatside"
   },
   {
     "title": "Boret",
@@ -104,44 +504,12 @@
     "dataSong": "when the party's over"
   },
   {
-    "title": "bloodline",
-    "artist": "Ariana Grande",
-    "cover": "arianagrande.jpg",
-    "mp3": "Ariana%20Grande%20-%20bloodline%20(Audio)",
-    "favorite": false,
-    "dataSong": "bloodline"
-  },
-  {
-    "title": "No guidance",
-    "artist": "Drake",
-    "cover": "drake.jpg",
-    "mp3": "Chris%20Brown%20-%20No%20Guidance%20(Official%20Video)%20ft.%20Drake",
-    "favorite": false,
-    "dataSong": "No guidance"
-  },
-  {
     "title": "Get Lucky",
     "artist": "Daft Punk",
     "cover": "daftpunk.jpg",
     "mp3": "Daft%20Punk%20-%20Get%20Lucky%20(Official%20Audio)%20ft.%20Pharrell%20Williams,%20Nile%20Rodgers",
     "favorite": false,
     "dataSong": "Get Lucky"
-  },
-  {
-    "title": "We're Going Home",
-    "artist": "Drake",
-    "cover": "drake.jpg",
-    "mp3": "Drake%20-%20Hold%20On,%20We're%20Going%20Home",
-    "favorite": false,
-    "dataSong": "We're Going Home"
-  },
-  {
-    "title": "Ocean Drive",
-    "artist": "Duke Dumont",
-    "cover": "oceandrive.jpg",
-    "mp3": "Duke%20Dumont%20-%20Ocean%20Drive%20(Official%20Music%20Video)",
-    "favorite": false,
-    "dataSong": "Ocean Drive"
   },
   {
     "title": "Hotel California",
@@ -152,51 +520,11 @@
     "dataSong": "Hotel California"
   },
   {
-    "title": "All night Long",
-    "artist": "Lionel Richie",
-    "cover": "lionell.jpg",
-    "mp3": "Lionel%20Richie%20All%20night%20Long",
-    "favorite": false,
-    "dataSong": "All night Long"
-  },
-  {
     "title": "i dont wannabe you any more",
     "artist": "Billie Eillish",
     "cover": "idontwannabeyouanymore.jpg",
     "mp3": "idontwannabeyouanymore",
     "favorite": false,
     "dataSong": "idontwannabeyouanymore"
-  },
-  {
-    "title": "Say Say Say",
-    "artist": "Michael Jackson",
-    "cover": "saysaysay.jpg",
-    "mp3": "MIchael%20Jackson%20&%20Paul%20McCartney%20Say%20Say%20Say%20Lyrics",
-    "favorite": false,
-    "dataSong": "Say Say Say"
-  },
-  {
-    "title": "Baby Be Mine",
-    "artist": "Michael Jackson",
-    "cover": "michaeljackson.jpg",
-    "mp3": "Michael%20Jackson%20-Thriller%20-%20Baby%20Be%20Mine",
-    "favorite": false,
-    "dataSong": "Baby Be Mine"
-  },
-  {
-    "title": "Lady hear me tonight",
-    "artist": "Modjo",
-    "cover": "modjo.jpg",
-    "mp3": "Modjo%20-%20Lady%20(Hear%20Me%20Tonight)%20(Official%20Video)",
-    "favorite": false,
-    "dataSong": "Lady hear me tonight"
-  },
-  {
-    "title": "Malamente",
-    "artist": "Rosalía",
-    "cover": "malamente.jpg",
-    "mp3": "ROSALÍA%20-%20MALAMENTE%20(Cap.1%20Augurio)",
-    "favorite": false,
-    "dataSong": "Malamente"
   }
 ]
