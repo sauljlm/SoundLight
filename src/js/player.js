@@ -179,35 +179,21 @@ export default class Player {
   btnAdd(song, index) { // eslint-disable-line
     const btnAdd = document.createElement('button');
 
+    btnAdd.setAttribute('class', 'add_button');
+    btnAdd.setAttribute('aria-label', 'btn add to playlist');
+
     if (song.favorite) {
       btnAdd.classList.add('add_button-active');
     }
 
-    btnAdd.setAttribute('class', 'add_button');
-    btnAdd.setAttribute('aria-label', 'btn add to playlist');
-
     btnAdd.addEventListener('click', () => {
       this.singleton.setFavorite = index;
-      console.log(song.favorite);
       if (song.favorite) {
         btnAdd.classList.add('add_button-active');
       } else {
         btnAdd.classList.remove('add_button-active');
       }
     });
-    // btnAdd.addEventListener('click', () => {
-    //   console.log(this.singleton.getViewPlayList);
-    //   if (this.singleton.getViewPlayList) {
-    //     btnAdd.classList.add('add_button-active');
-    //     btnAdd.addEventListener('click', () => {
-    //       this.singleton.setFavorite = index;
-    //     });
-    //   } else {
-    //     console.log(song.favorite);
-    //     this.singleton.setFavorite = index;
-    //     btnAdd.classList.toggle('add_button-active');
-    //   }
-    // });
 
     return btnAdd;
   }
