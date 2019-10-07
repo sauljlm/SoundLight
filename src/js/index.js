@@ -10,12 +10,11 @@ import './registerServiceWorker';
 
 const singleton = new Singleton(); // eslint-disable-line
 let player = null;
-let playList = null;
+let playList = null; // eslint-disable-line
 
 function appStar() {
   player = new Player('#songs_container');
   playList = new PlayList(player);
-  // console.log('player', player); // eslint-disable-line
 }
 
 function init() {

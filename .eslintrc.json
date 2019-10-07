@@ -2,5 +2,10 @@
   "env": {
     "browser": true
   },
-  "extends": "airbnb-base"
+  "extends": "airbnb-base",
+  "rules": { // to solve "error  Expected linebreaks to be 'LF' but found 'CRLF'  linebreak-style"
+    "linebreak-style": 0,
+    "global-require": 0,
+    "eslint linebreak-style": [0, "error", "windows"]
+  }
 }
