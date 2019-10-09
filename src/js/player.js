@@ -1,29 +1,26 @@
 import Singleton from './singleton';
+import UI from './UI';
 
 export default class Player {
-  constructor(selector) {
-    this.container = document.querySelector(selector);
+  constructor() {
+    this.contActivePlay = document.querySelector('.play_button');
     this.contPlayer = document.querySelector('.song_cover');
-    this.contCover = document.querySelector('.cover');
-    this.contName = document.querySelector('.song_name_active');
-    this.contArtist = document.querySelector('.song_artist');
-    this.btnClose = document.querySelector('.btn-close');
     this.contSongs = document.querySelector('.songs_list');
 
-    // active song
-    this.btnShowPlayer = document.querySelector('.show-player');
-    this.contActiveName = document.querySelector('.song_name');
-    this.contActivePlay = document.querySelector('.play_button');
+    this.pathUrl = 'https://sauljlm.github.io/songs-data';
 
-    this.SONGS_URL = 'https://sauljlm.github.io/songs-data';
-    this.audio = new Audio();
+    // instances
     this.singleton = new Singleton();
+    this.audio = null;
+    this.UI = null;
     this.songData = null;
 
     // elements
-    this.randomIcon = null;
-    this.playIcon = null;
-    this.repeatIcon = null;
+    this.randomBtn = null;
+    this.playBtn = null;
+    this.repeatBtn = null;
+    this.previousBtn = null;
+    this.nextBtn = null;
     this.timeElement = null;
     this.sliderElement = null;
     this.sliderLabel = null;
@@ -32,82 +29,11 @@ export default class Player {
     this.arraySelected = null;
 
     // values
-    this.RANDOM = false;
-    this.LOADED = false;
-    this.PLAYING = false;
-    this.REPEAT = false;
+    this.random = false;
+    this.playing = false;
+    this.loaded = false;
+    this.repeat = false;
     this.TIME = 0;
-
-    this.songUrl = this.singleton.getRandom(this.RANDOM);
-
-    this.renderListSongs();
-    this.renderPlayer();
-    this.load(this.songUrl);
-    this.render();
-    this.setSongActive();
-
-    // EVENTS
-    this.audio.addEventListener('ended', () => {
-      this.time = 0;
-      this.load(this.singleton.getNext(this.RANDOM, this.setNext()));
-      this.play();
-      this.render();
-      this.setSongActive();
-    });
-
-    this.audio.addEventListener('loadeddata', () => {
-      this.loaded = true;
-    });
-
-    this.audio.addEventListener('timeupdate', () => {
-      this.timeupdate();
-    });
-    this.btnClose.addEventListener('click', () => {
-      this.contPlayer.classList.toggle('hide-player');
-    });
-
-    this.btnShowPlayer.addEventListener('click', () => {
-      this.contPlayer.classList.toggle('hide-player');
-    });
-
-    this.contActivePlay.addEventListener('click', this.togglePlay.bind(this));
-  }
-
-  get loaded() {
-    return this.LOADED;
-  }
-
-  set loaded(value) {
-    this.LOADED = value;
-
-    this.timeElement.innerText = this.time;
-    this.sliderElement.disabled = !this.LOADED;
-    this.durationElement.innerText = this.duration;
-  }
-
-  set random(value) {
-    this.RANDOM = value;
-    this.randomIcon.classList.toggle('random-active');
-  }
-
-  get playing() {
-    return this.PLAYING;
-  }
-
-  set playing(value) {
-    this.PLAYING = value;
-  }
-
-  get repeat() {
-    return this.REPEAT;
-  }
-
-  set repeat(value) {
-    this.REPEAT = value;
-    this.audio.loop = this.REPEAT;
-
-    // update icon
-    this.repeatIcon.classList.toggle('repeat-active');
   }
 
   get time() {
@@ -117,7 +43,6 @@ export default class Player {
   set time(value) {
     this.TIME = value;
 
-    // update
     this.sliderElement.value = (this.TIME * 100) / this.audio.duration;
     this.timeElement.innerText = this.time;
   }
@@ -129,7 +54,6 @@ export default class Player {
   static FormatTime(time) {
     if (time === 0) return '00:00';
     const secs = Math.round(time);
-    // let hours = Math.floor(secs / (60 * 60));
 
     const minutesDivisor = secs % (60 * 60);
     let minutes = Math.floor(minutesDivisor / 60);
@@ -137,7 +61,6 @@ export default class Player {
     const secondsDivisor = minutesDivisor % 60;
     let seconds = Math.ceil(secondsDivisor);
 
-    // hours = hours ? (hours < 10 ? `0${hours}` : hours) : '--';
     if (minutes < 10) {
       minutes = `0${minutes}`;
     } else {
@@ -145,6 +68,159 @@ export default class Player {
     }
     seconds = seconds < 10 ? `0${seconds}` : seconds;
     return `${minutes}:${seconds}`;
+  }
+
+  startRender() {
+    this.audio = new Audio();
+    this.UI = new UI();
+
+    this.renderPlayer();
+    this.renderListSongs();
+    this.startPlaying(0, 'next');
+
+    this.audio.addEventListener('loadeddata', () => {
+      this.loaded = true;
+      this.timeElement.innerText = this.time;
+      this.sliderElement.disabled = !this.loaded;
+      this.durationElement.innerText = this.duration;
+    });
+    this.audio.addEventListener('timeupdate', () => {
+      this.timeupdate();
+    });
+    this.audio.addEventListener('ended', () => {
+      this.ended();
+    });
+    this.contActivePlay.addEventListener('click', this.togglePlay.bind(this));
+  }
+
+  startPlaying(time, setAction) {
+    if (setAction === 'next') {
+      this.load(this.singleton.getNext(this.random, this.setNext()));
+    } else if (setAction === 'previous') {
+      this.load(this.singleton.getPrevious(this.random, this.setPrevious()));
+    }
+    if (this.playing) {
+      this.play();
+    }
+    this.time = time;
+    this.UI.render(this.songData);
+    this.setSongActive();
+  }
+
+  load(songUrl = this.singleton.getRandom(this.random)) {
+    const url = `${this.pathUrl}/${songUrl.mp3}.mp3`;
+    this.songData = songUrl;
+    this.audio.src = url;
+  }
+
+  timer() {
+    const timer = this.UI.renderTimer();
+    const slider = this.UI.renderSlider();
+    this.timeElement = this.UI.renderColTime();
+    this.durationElement = this.UI.renderColDur();
+    this.sliderElement = this.UI.renderSliderInput();
+    this.sliderLabel = this.UI.renderSlideLabel();
+
+    this.sliderElement.addEventListener('input', this.slideAction.bind(this));
+
+    slider.appendChild(this.sliderLabel);
+    slider.appendChild(this.sliderElement);
+    timer.appendChild(this.timeElement);
+    timer.appendChild(slider);
+    timer.appendChild(this.durationElement);
+
+    timer.addEventListener('change', this.timechanged.bind(this));
+
+    return timer;
+  }
+
+  controls() {
+    const controls = this.UI.renderControls();
+    this.randomBtn = this.UI.renderRandomBtn();
+    this.repeatBtn = this.UI.renderRepeatBtn(this.repeatBtn);
+    this.playBtn = this.UI.renderPlayBtn();
+    this.previousBtn = this.UI.renderPreviousBtn();
+    this.nextBtn = this.UI.renderNextBtn();
+
+    this.randomBtn.addEventListener('click', this.toggleRandom.bind(this));
+    this.repeatBtn.addEventListener('click', this.actionRepeat.bind(this));
+    this.playBtn.addEventListener('click', this.togglePlay.bind(this));
+    this.previousBtn.addEventListener('click', this.toggleBack.bind(this));
+    this.nextBtn.addEventListener('click', this.toggleNext.bind(this));
+
+    controls.appendChild(this.randomBtn);
+    controls.appendChild(this.previousBtn);
+    controls.appendChild(this.playBtn);
+    controls.appendChild(this.nextBtn);
+    controls.appendChild(this.repeatBtn);
+
+    return controls;
+  }
+
+  renderPlayer() {
+    const player = this.UI.renderPlayer();
+    const timer = this.timer();
+    const controls = this.controls();
+
+    player.appendChild(timer);
+    player.appendChild(controls);
+    this.contPlayer.appendChild(player);
+  }
+
+  renderListSongs() {
+    const contSongs = this.UI.renderContSongs();
+    let dataSongs = null;
+
+    if (this.singleton.getViewPlayList) {
+      dataSongs = this.singleton.getPlayList;
+    } else {
+      dataSongs = this.singleton.getSongs;
+    }
+
+    this.UI.clearContSongs();
+
+    dataSongs.forEach((song, index) => {
+      const itemSong = this.UI.renderSongsList(dataSongs, song, index);
+      itemSong.addEventListener('click', () => {
+        this.UI.cleanSongListClass();
+        this.songSelected = index;
+        this.time = 0;
+        this.load(this.singleton.getOne(this.songSelected));
+        this.play();
+        this.contActivePlay.classList.add('btn-active');
+        this.UI.render(song);
+        this.setSongActive(this.songSelected);
+      });
+
+      itemSong.appendChild(this.renderBtnFavorite(dataSongs[index], index));
+
+      contSongs.appendChild(itemSong);
+      this.contSongs.appendChild(contSongs);
+      this.setSongActive();
+    });
+  }
+
+  renderBtnFavorite(song, index) {
+    const btnAdd = this.UI.renderUIBtnFavorite(song.favorite);
+
+    btnAdd.addEventListener('click', () => {
+      this.singleton.setFavorite = index;
+      this.UI.updateUIBtnFavorite(btnAdd, song.favorite);
+      this.singleton.generatePlayList();
+      this.renderListSongs();
+    });
+
+    return btnAdd;
+  }
+
+  setSongActive(songSelected) {
+    if (songSelected) {
+      this.singleton.setPlaying = songSelected;
+      this.songSelected = songSelected;
+    } else {
+      this.songSelected = this.singleton.getPlaying;
+    }
+    this.UI.updateUISongActive(this.songSelected);
   }
 
   setNext() {
@@ -157,7 +233,7 @@ export default class Player {
     return playing;
   }
 
-  setBack() {
+  setPrevious() {
     let playing = this.singleton.getPlaying;
     if (playing <= 0) {
       playing = this.singleton.getSongs.length - 1;
@@ -167,197 +243,66 @@ export default class Player {
     return playing;
   }
 
-  renderListSongs() {
-    const container = document.createElement('ul');
-    container.setAttribute('class', 'songs');
-
-    this.composeList(container);
-
-    this.contSongs.appendChild(container);
+  timechanged() {
+    this.audio.timeElement = (this.sliderElement.value / 100) * this.audio.duration;
   }
 
-  btnAdd(song, index) { // eslint-disable-line
-    const btnAdd = document.createElement('button');
+  timeupdate() {
+    this.time = this.audio.currentTime;
+  }
 
-    btnAdd.setAttribute('class', 'add_button');
-    btnAdd.setAttribute('aria-label', 'btn add to playlist');
+  play() {
+    this.audio.play();
+    this.playing = !this.playing;
+  }
 
-    if (song.favorite) {
-      btnAdd.classList.add('add_button-active');
+  pause() {
+    this.audio.pause();
+    this.playing = !this.playing;
+  }
+
+  actionRepeat() {
+    this.repeat = !this.repeat;
+    if (this.repeat) {
+      this.audio.loop = this.repeat;
     }
-
-    btnAdd.addEventListener('click', () => {
-      this.singleton.setFavorite = index;
-      if (song.favorite) {
-        btnAdd.classList.add('add_button-active');
-      } else {
-        btnAdd.classList.remove('add_button-active');
-      }
-    });
-
-    return btnAdd;
+    this.repeatBtn.classList.toggle('repeat-active');
   }
 
-  setSongActive(songSelected) {
-    const songs = document.querySelectorAll('.song');
-    if (songSelected) {
-      this.singleton.setPlaying = songSelected;
-      this.songSelected = songSelected;
+  toggleRandom() {
+    this.random = !this.random;
+    this.randomBtn.classList.toggle('random-active');
+  }
+
+  togglePlay() {
+    if (this.playing) {
+      this.pause();
+      this.contActivePlay.classList.remove('btn-active');
+      this.playBtn.classList.remove('btn-active');
     } else {
-      this.songSelected = this.singleton.getPlaying;
+      this.play();
+      this.contActivePlay.classList.add('btn-active');
+      this.playBtn.classList.add('btn-active');
     }
-    songs.forEach((song, index) => {
-      song.classList.remove('song-active');
-      if (this.songSelected === index) {
-        song.classList.add('song-active');
-      }
-    });
+    this.setSongActive();
   }
 
-  composeList(container = this.contSongs) {
-    let songs = null;
-
-    if (this.singleton.getViewPlayList) {
-      songs = this.singleton.getPlayList;
+  toggleNext() {
+    if (this.playing) {
+      this.startPlaying(0, 'next');
     } else {
-      songs = this.singleton.getSongs;
+      this.startPlaying(this.TIME, 'next');
     }
-
-    this.clear(container);
-
-    songs.forEach((song, index) => {
-      const row = document.createElement('li');
-      row.setAttribute('id', `${index}`);
-      row.setAttribute('dataSong', `${songs[index].dataSong}`);
-      row.setAttribute('class', 'song clearfix');
-
-      const title = document.createElement('p');
-      title.innerHTML = `${song.title} - ${song.artist}`;
-
-      row.appendChild(title);
-      row.appendChild(this.btnAdd(songs[index], index));
-
-      row.addEventListener('click', () => {
-        document.querySelectorAll('.song').forEach((element) => {
-          element.classList.remove('song-active');
-        });
-        this.songSelected = index;
-        this.arraySelected = 'songs';
-        this.time = 0;
-        this.load(this.singleton.getOne(this.songSelected));
-        this.play();
-        this.contActivePlay.classList.add('btn-active');
-        this.render();
-        this.setSongActive(this.songSelected);
-      });
-      container.appendChild(row);
-      this.setSongActive();
-    });
+    this.setSongActive();
   }
 
-  clear(container) { // eslint-disable-line
-    container.innerHTML = ''; // eslint-disable-line
-  }
-
-  render() {
-    this.contCover.setAttribute('src', `img/covers/${this.songData.cover}`);
-    this.contCover.setAttribute('alt', `cover of ${this.songData.title}`);
-    this.contName.innerHTML = `${this.songData.title}`;
-    this.contActiveName.innerHTML = `${this.songData.title}`;
-    this.contArtist.innerHTML = `${this.songData.artist}`;
-  }
-
-  renderPlayer() {
-    const player = document.createElement('div');
-    player.classList.add('player');
-
-    player.appendChild(this.timer());
-    player.appendChild(this.controls());
-
-    this.contPlayer.appendChild(player);
-  }
-
-  controls() {
-    const controls = document.createElement('div');
-    controls.classList.add('controls');
-
-    this.randomIcon = document.createElement('button');
-    this.randomIcon.classList.add('random');
-    this.randomIcon.setAttribute('aria-label', 'button-random');
-
-    this.repeatIcon = document.createElement('button');
-    this.repeatIcon.classList.add('repeat');
-    this.repeatIcon.setAttribute('aria-label', 'button-repeat');
-
-    this.playIcon = document.createElement('button');
-    this.playIcon.classList.add('play');
-    this.playIcon.setAttribute('aria-label', 'button-play');
-
-    this.backIcon = document.createElement('button');
-    this.backIcon.classList.add('back');
-    this.backIcon.setAttribute('aria-label', 'button-back');
-
-    this.nextIcon = document.createElement('button');
-    this.nextIcon.classList.add('next');
-    this.nextIcon.setAttribute('aria-label', 'button-next');
-
-    // events
-    this.randomIcon.addEventListener('click', this.toggleRandom.bind(this));
-    this.repeatIcon.addEventListener('click', this.toggleRepeat.bind(this));
-    this.playIcon.addEventListener('click', this.togglePlay.bind(this));
-    this.backIcon.addEventListener('click', this.toggleBack.bind(this));
-    this.nextIcon.addEventListener('click', this.toggleNext.bind(this));
-
-    controls.appendChild(this.randomIcon);
-    controls.appendChild(this.backIcon);
-    controls.appendChild(this.playIcon);
-    controls.appendChild(this.nextIcon);
-    controls.appendChild(this.repeatIcon);
-    return controls;
-  }
-
-  timer() {
-    const row = document.createElement('div');
-    row.classList.add('timer');
-
-    const colTime = document.createElement('div');
-    colTime.classList.add('time');
-    this.timeElement = document.createElement('p');
-    colTime.appendChild(this.timeElement);
-
-    const colSlider = document.createElement('div');
-    colSlider.classList.add('slider');
-    this.sliderElement = document.createElement('input');
-    this.sliderLabel = document.createElement('label');
-
-    this.sliderLabel.innerHTML = 'slider bar';
-
-    this.sliderLabel.setAttribute('class', 'sr-only');
-    this.sliderLabel.setAttribute('for', 'slider-bar');
-    this.sliderElement.setAttribute('name', 'slider-bar');
-    this.sliderElement.setAttribute('id', 'slider-bar');
-
-    this.sliderElement.type = 'range';
-    this.sliderElement.disabled = true;
-    this.sliderElement.min = 0;
-    this.sliderElement.max = 100;
-    this.sliderElement.value = 0;
-    colSlider.appendChild(this.sliderLabel);
-    colSlider.appendChild(this.sliderElement);
-
-    const colDuration = document.createElement('div');
-    colDuration.classList.add('duration');
-    this.durationElement = document.createElement('p');
-    colDuration.appendChild(this.durationElement);
-
-    // events
-    row.addEventListener('change', this.timechanged.bind(this));
-    this.sliderElement.addEventListener('input', this.slideAction.bind(this));
-
-    row.appendChild(colTime);
-    row.appendChild(colSlider);
-    row.appendChild(colDuration);
-    return row;
+  toggleBack() {
+    if (this.playing) {
+      this.startPlaying(0, 'previous');
+    } else {
+      this.startPlaying(this.TIME, 'previous');
+    }
+    this.setSongActive();
   }
 
   slideAction() {
@@ -365,84 +310,11 @@ export default class Player {
     this.audio.currentTime = this.TIME;
   }
 
-  load(songUrl) {
-    if (songUrl) {
-      this.songData = songUrl;
-      const url = `${this.SONGS_URL}/${songUrl.mp3}.mp3`;
-      this.audio.src = url;
-    }
-  }
-
-  toggleRandom() {
-    this.random = !this.RANDOM;
-  }
-
-  togglePlay() {
-    if (this.playing) {
-      this.pause();
-      this.contActivePlay.classList.remove('btn-active');
-      this.playIcon.classList.remove('btn-active');
-    } else {
-      this.play();
-      this.contActivePlay.classList.add('btn-active');
-      this.playIcon.classList.add('btn-active');
-    }
-    this.setSongActive();
-  }
-
-  toggleNext() {
-    if (this.playing) {
-      this.time = 0;
-      this.load(this.singleton.getNext(this.RANDOM, this.setNext()));
-      this.play();
-      this.render();
-    } else {
-      this.load(this.singleton.getNext(this.RANDOM, this.setNext()));
-      this.pause();
-      this.render();
-    }
-    this.setSongActive();
-  }
-
-  toggleBack() {
-    if (this.playing) {
-      this.time = 0;
-      this.load(this.singleton.getBack(this.RANDOM, this.setBack()));
-      this.play();
-      this.render();
-    } else {
-      this.load(this.singleton.getBack(this.RANDOM, this.setBack()));
-      this.pause();
-      this.render();
-    }
-    this.setSongActive();
-  }
-
-  toggleRepeat() {
-    this.repeat = !this.repeat;
-  }
-
-  play() {
-    this.audio.play();
-    this.playing = true;
-  }
-
-  pause() {
-    this.audio.pause();
-    this.playing = false;
-  }
-
-  timeupdate() {
-    this.time = this.audio.currentTime;
-  }
-
-  timechanged() {
-    this.audio.timeElement = (this.sliderElement.value / 100) * this.audio.duration;
-  }
-
   ended() {
     if (this.repeat) {
       this.play();
+    } else {
+      this.startPlaying(0, 'next');
     }
   }
 }

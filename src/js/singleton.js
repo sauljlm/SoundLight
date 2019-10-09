@@ -3,7 +3,6 @@ export default class Singleton {
   constructor() {
     this.DATA = null;
     this.playList = [];
-    this.getJson();
     this.playing = 0;
     this.viewPlayList = false;
 
@@ -11,18 +10,6 @@ export default class Singleton {
       instance = this;
     }
     return instance;
-  }
-
-  getJson(url = 'songs.json') {
-    fetch(url)
-      .then(data => data.json())
-      .then((data) => {
-        this.DATA = data;
-      });
-  }
-
-  set setViewPlayList(value) {
-    this.viewPlayList = value;
   }
 
   get getViewPlayList() {
@@ -59,6 +46,13 @@ export default class Singleton {
     return this.DATA[random];
   }
 
+  async loadData() {
+    const URI = 'songs.json';
+    const response = await fetch(URI);
+    const data = await response.json();
+    this.DATA = data;
+  }
+
   getOne(index) {
     let song = null;
     song = this.DATA[index];
@@ -86,15 +80,19 @@ export default class Singleton {
     return song;
   }
 
-  getBack(random, back = this.playing) {
+  getPrevious(random, previous = this.playing) {
     let song = null;
     if (random === true) {
       song = this.getRandomSong;
     } else {
-      song = this.DATA[back];
-      this.playing = back;
+      song = this.DATA[previous];
+      this.playing = previous;
     }
     return song;
+  }
+
+  changeViewPlayList() {
+    this.viewPlayList = !this.viewPlayList;
   }
 
   emptyPlaylist() {

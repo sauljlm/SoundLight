@@ -8,24 +8,14 @@ export default class PlayList {
     this.player = player;
     this.songData = null;
 
-    this.view = false;
-
     // EVENTS
-    this.btnPlayList.addEventListener('click', this.generatePlayList.bind(this));
+    this.btnPlayList.addEventListener('click', this.startPlayList.bind(this));
     this.songData = this.singleton.getPlayList;
   }
 
-  changeView() {
-    this.view = !this.view;
-  }
-
-  generatePlayList() {
-    this.changeView();
-
-    this.singleton.setViewPlayList = this.view;
-
+  startPlayList() {
+    this.singleton.changeViewPlayList();
     this.singleton.generatePlayList();
-
-    this.player.composeList();
+    this.player.renderListSongs();
   }
 }
