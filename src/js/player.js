@@ -76,7 +76,9 @@ export default class Player {
 
     this.renderPlayer();
     this.renderListSongs();
-    this.startPlaying(0, 'next');
+    this.load(this.singleton.getNext(this.random));
+    this.setSongActive();
+    this.UI.render(this.songData);
 
     this.audio.addEventListener('loadeddata', () => {
       this.loaded = true;
@@ -204,7 +206,7 @@ export default class Player {
     const btnAdd = this.UI.renderUIBtnFavorite(song.favorite);
 
     btnAdd.addEventListener('click', () => {
-      this.singleton.setFavorite = index;
+      this.singleton.update(song._id, index);
       this.UI.updateUIBtnFavorite(btnAdd, song.favorite);
       this.singleton.generatePlayList();
       this.renderListSongs();

@@ -155,6 +155,7 @@ export default class UI {
 
   renderSongsList(dataSongs, song, index) {
     const item = document.createElement('li');
+    item.setAttribute('data-id', `${dataSongs[index]._id}`);
     item.setAttribute('id', `${index}`);
     item.setAttribute('dataSong', `${dataSongs[index].dataSong}`);
     item.setAttribute('class', 'song clearfix');

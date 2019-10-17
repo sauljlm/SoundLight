@@ -5,7 +5,7 @@ import PlayList from './playList';
 import UI from './UI';
 
 // Load styles.
-import '../scss/style.scss';
+import '../scss/style.scss'; 
 // Register service worker.
 import './registerServiceWorker';
 

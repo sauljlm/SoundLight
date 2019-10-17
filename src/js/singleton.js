@@ -5,6 +5,7 @@ export default class Singleton {
     this.playList = [];
     this.playing = 0;
     this.viewPlayList = false;
+    this.url = 'http://localhost:1234';
 
     if (!instance) {
       instance = this;
@@ -47,10 +48,10 @@ export default class Singleton {
   }
 
   async loadData() {
-    const URI = 'songs.json';
-    const response = await fetch(URI);
+    const response = await fetch(this.url);
     const data = await response.json();
     this.DATA = data;
+    console.log(this.DATA);
   }
 
   getOne(index) {
@@ -106,5 +107,15 @@ export default class Singleton {
         this.playList.push(element);
       }
     });
+  }
+
+  // post 
+  update(Id, index) {
+    const data = {favorite: !this.DATA[index].favorite};
+    fetch(`${this.url}/${Id}`, {
+      method: 'PATCH',
+      body: JSON.stringify(data)
+    }).then(res => res.json())
+    .catch(error => console.error('Error:', error))
   }
 }
