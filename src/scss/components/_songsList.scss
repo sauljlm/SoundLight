@@ -1,0 +1,30 @@
+.song {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 4%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (min-width: 768px){
+    padding: 2%;
+  }
+}
+
+.song:hover {
+  box-shadow: $shadow;
+}
+
+.song-active {
+  box-shadow: $shadow;
+}
+
+.songs_list {
+  overflow:auto;
+
+  button {
+    overflow: visible;
+  }
+}
+
+

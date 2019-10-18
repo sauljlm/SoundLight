@@ -1,0 +1,43 @@
+//General
+body {
+  background: $gradient;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+button {
+  background-color: transparent;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: none;
+  height: 30px;
+  overflow: hidden;
+  width: 30px;
+
+  &:focus {
+    box-shadow: none;
+    outline: none !important;
+    outline-width: 0 !important;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+  }
+}
+
+h3, 
+h4 {
+  color: $white;
+  font-family: $primary-font;
+  font-size: 17px;
+}
+
+p {
+  color: $white;
+  font-family: $primary-font;
+  font-size: 15px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+

@@ -1,0 +1,108 @@
+.active_song {
+  align-items: center;
+  background: $active-song9gradient;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+
+  .play_button {
+    height: 30px;
+    width: 30px;
+  }
+}
+
+.controls {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 5%;
+}
+
+.cover {
+  height: 100%;
+  margin-left: 9%;
+  max-height: 100%;
+  width: 84%;
+  
+  @media (min-width: 768px){
+    margin-top: 0;
+    max-height: 100%; 
+    max-width: 100%;
+  }
+  @media (min-width: 800px){
+    margin-left: 19%;
+    width: 60%;
+  }
+  @media (min-width: 1024px){
+    margin-left: 33%;
+    max-width: 42%;
+    width: 37%;
+  }
+}
+
+.player {
+  align-self: center;
+}
+
+.song_artist {
+  text-align: center;
+}
+
+.cont-player {
+  background: $gradient;;
+  display: grid;
+  grid-row: 4;
+  grid-template-columns: auto;
+  grid-template-rows: 10% 50% 15% 25%;
+  grid-template-areas: 
+  "header"
+  "cover"
+  "info"
+  "player";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  padding-bottom: 100%;
+  transition: 1.5s;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.cont-player--hide {
+  top: 150%;
+  transition: 2s;
+}
+
+.song_info {
+  align-self: center;
+  grid-area: info;
+
+  @media (min-width: 768px){
+    margin-top: 0%;
+  }
+}
+
+.song_image {
+  align-items: center;
+  background-size: cover;
+  display: flex;
+  margin: 0 auto;
+  width: 90%;
+}
+
+.song_name {
+  margin: 1%;
+  text-align: center;
+}
+
+.timer {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+
+  @media (min-width: 768px) {
+    margin-top: 1%;
+  }
+}

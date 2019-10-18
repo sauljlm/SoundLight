@@ -4,7 +4,7 @@ import UI from './UI';
 export default class Player {
   constructor() {
     this.contActivePlay = document.querySelector('.play_button');
-    this.contPlayer = document.querySelector('.song_cover');
+    this.contPlayer = document.querySelector('.js-cont-player');
     this.contSongs = document.querySelector('.songs_list');
 
     this.pathUrl = 'https://sauljlm.github.io/songs-data';

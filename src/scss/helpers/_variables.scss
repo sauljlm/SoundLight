@@ -1,0 +1,24 @@
+// fonts
+$primary-font: 'Lato', sans-serif;
+$title-font: 'Raleway', sans-serif;
+
+// colors
+$white: #fff;
+$yellow: #fdbb2d;
+$gray: #777;
+
+$gradient: linear-gradient(0deg, #22c1c3 20%, #bfbb7b 80%, #fdbb2d 100%);
+$footer-gradient: linear-gradient(0deg, #22c1c3 -28%, #bfbb7b 111%, #fdbb2d 273%);
+$active-song9gradient: linear-gradient(0deg,#fdbb2d -268% , #bfbb7b 85%,#22c1c3 211% );
+
+//shadows
+$shadow: 2px 2px 10px #00000042;
+
+// breack points
+$site-breakpoints: (
+    "sm": "20em", //320px
+    "md": "48em", //768px
+    "lg": "64em", //1024px
+    "xl": "75em", //1200px
+    "xx-l": "87.5em" //1400px
+);

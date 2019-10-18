@@ -1,0 +1,19 @@
+@mixin mquery($breakpoint) {
+  $val: map-getter($site-breakpoints, $breakpoint);
+
+  @if $val == false {
+      @if type-of($breakpoint) == number {
+          @media only screen and ("min-width": $breakpoint) {
+              @content;
+          }
+      }
+      @else {
+          @error "QUERY MIXINS ERROR - INVALID ARGUMENT";
+      }
+  }
+  @else {
+      @media only screen and ("min-width": $val) {
+          @content;
+      }
+  }
+}

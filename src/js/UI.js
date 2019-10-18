@@ -3,7 +3,7 @@ import Singleton from './singleton';
 export default class UI {
   constructor() {
     // elements
-    this.contPlayer = document.querySelector('.song_cover');
+    this.contPlayer = document.querySelector('.js-cont-player');
     this.btnClose = document.querySelector('.btn-close');
     this.btnShowPlayer = document.querySelector('.show-player');
     this.contCover = document.querySelector('.cover');
@@ -18,11 +18,11 @@ export default class UI {
 
     // events
     this.btnClose.addEventListener('click', () => {
-      this.contPlayer.classList.toggle('hide-player');
+      this.contPlayer.classList.toggle('cont-player--hide');
     });
 
     this.btnShowPlayer.addEventListener('click', () => {
-      this.contPlayer.classList.toggle('hide-player');
+      this.contPlayer.classList.toggle('cont-player--hide');
     });
   }
 
@@ -43,7 +43,7 @@ export default class UI {
 
   renderRandomBtn() {
     const randomBtn = document.createElement('button');
-    randomBtn.classList.add('random');
+    randomBtn.classList.add('btn-random');
     randomBtn.setAttribute('aria-label', 'button-random');
 
     return randomBtn;
@@ -51,7 +51,7 @@ export default class UI {
 
   renderRepeatBtn() {
     const repeatBtn = document.createElement('button');
-    repeatBtn.classList.add('repeat');
+    repeatBtn.classList.add('btn-repeat');
     repeatBtn.setAttribute('aria-label', 'button-repeat');
 
     return repeatBtn;
@@ -59,7 +59,7 @@ export default class UI {
 
   renderPlayBtn() {
     const playBtn = document.createElement('button');
-    playBtn.classList.add('play');
+    playBtn.classList.add('btn-play');
     playBtn.setAttribute('aria-label', 'button-play');
 
     return playBtn;
@@ -67,7 +67,7 @@ export default class UI {
 
   renderPreviousBtn() {
     const previousBtn = document.createElement('button');
-    previousBtn.classList.add('back');
+    previousBtn.classList.add('btn-back');
     previousBtn.setAttribute('aria-label', 'button-back');
 
     return previousBtn;
@@ -75,7 +75,7 @@ export default class UI {
 
   renderNextBtn() {
     const nextBtn = document.createElement('button');
-    nextBtn.classList.add('next');
+    nextBtn.classList.add('btn-next');
     nextBtn.setAttribute('aria-label', 'button-next');
 
     return nextBtn;
@@ -175,11 +175,11 @@ export default class UI {
   renderUIBtnFavorite(favorite) {
     const btnAdd = document.createElement('button');
 
-    btnAdd.setAttribute('class', 'add_button');
+    btnAdd.setAttribute('class', 'btn-favorite');
     btnAdd.setAttribute('aria-label', 'btn add to playlist');
 
     if (favorite) {
-      btnAdd.classList.add('add_button-active');
+      btnAdd.classList.add('btn-favorite-active');
     }
 
     return btnAdd;
@@ -187,9 +187,9 @@ export default class UI {
 
   updateUIBtnFavorite(btnAdd, favorite) {
     if (favorite) {
-      btnAdd.classList.add('add_button-active');
+      btnAdd.classList.add('btn-favorite-active');
     } else {
-      btnAdd.classList.remove('add_button-active');
+      btnAdd.classList.remove('btn-favorite-active');
     }
   }
 
@@ -214,11 +214,11 @@ export default class UI {
   }
 
   toggleRandomIcon() {
-    this.randomIcon.classList.toggle('random-active');
+    this.randomIcon.classList.toggle('btn-random--active');
   }
 
   toggleRepeatIcon() {
-    this.repeatIcon.classList.toggle('repeat-active');
+    this.repeatIcon.classList.toggle('btn-repeat--active');
   }
 
   cleanContainer(container) { // eslint-disable-line

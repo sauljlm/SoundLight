@@ -1,0 +1,47 @@
+.container {
+  display: grid;
+  grid-row: 4;
+  grid-template-columns: auto;
+  grid-template-rows: 15% 70% 7.5% 7.5%;
+  grid-template-areas: 
+    "header"
+    "list"
+    "player"
+    "footer";
+  height: 100vh;
+  max-height: 100vh;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.header {
+  padding-bottom: 10px;
+}
+
+.header__sub-title {
+  color:$white;
+  font-family: $primary-font;
+  font-size: 18px;
+  margin-left: 56%;
+  margin-bottom: 0;
+
+  @include mquery("md") {
+    font-size: 28px;
+    margin-left: 29%;
+    text-align: center;
+  }
+  @include mquery("xl") {
+    font-size: 35px;
+  }
+}
+
+.header__title {
+  color: $white;
+  font-family: $title-font;
+  font-size: 41px;
+  text-align: center;
+
+  @include mquery("md") {
+    font-size: 54px;
+  }
+}
