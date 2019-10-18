@@ -6,7 +6,6 @@ const Post = require('../models/schemas');
 router.get('/', async (req, res) => {
   try {
     const posts = await Post.find();
-    res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(posts);
   } 
   catch(err) {
@@ -18,7 +17,6 @@ router.get('/', async (req, res) => {
 router.get('/:Id', async (req, res) => {
   try{
     const post = await Post.findById(req.params.Id);
-    res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(post);
   }
   catch(err) {
@@ -38,7 +36,6 @@ router.post('/', async (req, res) => {
   });
   try {
     const savedPost = await post.save()
-    res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(savedPost);
   }
   catch(err) {
@@ -50,7 +47,6 @@ router.post('/', async (req, res) => {
 router.delete('/:Id', async (req, res) => {
   try {
     const removeId = await Post.remove({_id: req.params.Id });
-    res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(removeId);
   }
   catch(err) {
@@ -65,7 +61,6 @@ router.patch('/:Id', async (req, res) => {
       {_id: req.params.Id },
       { $set: {favorite: req.body.favorite}
     });
-    res.setHeader('Access-Control-Allow-Origin', '*');
     res.json(updateId);
   }
   catch(err) {

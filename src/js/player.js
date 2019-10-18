@@ -207,7 +207,8 @@ export default class Player {
 
     btnAdd.addEventListener('click', () => {
       this.singleton.update(song._id, index);
-      this.UI.updateUIBtnFavorite(btnAdd, song.favorite);
+      btnAdd.classList.toggle('add_button-active');
+      // this.UI.updateUIBtnFavorite(btnAdd, song.favorite);
       this.singleton.generatePlayList();
       this.renderListSongs();
     });

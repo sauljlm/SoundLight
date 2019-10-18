@@ -51,7 +51,6 @@ export default class Singleton {
     const response = await fetch(this.url);
     const data = await response.json();
     this.DATA = data;
-    console.log(this.DATA);
   }
 
   getOne(index) {
@@ -107,15 +106,17 @@ export default class Singleton {
         this.playList.push(element);
       }
     });
-  }
+  } 
 
-  // post 
+  // post
   update(Id, index) {
-    const data = {favorite: !this.DATA[index].favorite};
     fetch(`${this.url}/${Id}`, {
       method: 'PATCH',
-      body: JSON.stringify(data)
-    }).then(res => res.json())
-    .catch(error => console.error('Error:', error))
+      body: JSON.stringify({ favorite : !this.DATA[index].favorite }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8'
+      }
+    })
+    .then(response => response.json())
   }
 }
