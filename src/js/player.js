@@ -171,13 +171,7 @@ export default class Player {
 
   renderListSongs() {
     const contSongs = this.UI.renderContSongs();
-    let dataSongs = null;
-
-    if (this.singleton.getViewPlayList) {
-      dataSongs = this.singleton.getPlayList;
-    } else {
-      dataSongs = this.singleton.getSongs;
-    }
+    let dataSongs = this.updateDataSongs();
 
     this.UI.clearContSongs();
 
@@ -194,7 +188,7 @@ export default class Player {
         this.setSongActive(this.songSelected);
       });
 
-      itemSong.appendChild(this.renderBtnFavorite(dataSongs[index], index));
+      itemSong.appendChild(this.renderBtnFavorite(index));
 
       contSongs.appendChild(itemSong);
       this.contSongs.appendChild(contSongs);
@@ -202,19 +196,34 @@ export default class Player {
     });
   }
 
-  renderBtnFavorite(song, index) {
-    const btnAdd = this.UI.renderUIBtnFavorite(song.favorite);
+  updateDataSongs() {
+    let dataSongs = null;
+    if (this.singleton.getViewPlayList) {
+      dataSongs = this.singleton.getPlayList;
+    } else {
+      dataSongs = this.singleton.getSongs;
+    }
+    return dataSongs;
+  }
+
+  renderBtnFavorite(index) {
+    let song = this.updateDataSongs();
+    const btnAdd = this.UI.renderUIBtnFavorite(song[index].favorite);
 
     btnAdd.addEventListener('click', () => {
-      this.singleton.update(song._id, index);
-      btnAdd.classList.toggle('add_button-active');
-      // this.UI.updateUIBtnFavorite(btnAdd, song.favorite);
-      this.singleton.generatePlayList();
-      this.renderListSongs();
+      this.singleton.update(song[index]._id, index)
+      .then(() => {
+        song = this.updateDataSongs();
+        this.UI.updateUIBtnFavorite(btnAdd, song[index].favorite);
+        this.singleton.generatePlayList();
+        if (this.singleton.getViewPlayList) {
+          this.renderListSongs();
+        }
+      });
     });
 
     return btnAdd;
-  }
+  } 
 
   setSongActive(songSelected) {
     if (songSelected) {

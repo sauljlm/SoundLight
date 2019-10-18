@@ -33,14 +33,6 @@ export default class Singleton {
     return this.playList;
   }
 
-  set setFavorite(index) {
-    if (this.viewPlayList) {
-      this.playList[index].favorite = !this.playList[index].favorite;
-    } else {
-      this.DATA[index].favorite = !this.DATA[index].favorite;
-    }
-  }
-
   get getRandomSong() {
     const random = Math.round(Math.random() * (this.DATA.length - 0) + 0);
     this.playing = random;
@@ -110,13 +102,17 @@ export default class Singleton {
 
   // post
   update(Id, index) {
-    fetch(`${this.url}/${Id}`, {
-      method: 'PATCH',
-      body: JSON.stringify({ favorite : !this.DATA[index].favorite }),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8'
-      }
-    })
-    .then(response => response.json())
+    return new Promise(resolve => {
+      fetch(`${this.url}/${Id}`, {
+        method: 'PUT',
+        body: JSON.stringify({ favorite : !this.DATA[index].favorite }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8'
+        }
+      })
+      .then(response => response.json())
+      .then(() => this.loadData())
+      .then(() => { resolve() })
+    });
   }
 }

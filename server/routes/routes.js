@@ -55,10 +55,10 @@ router.delete('/:Id', async (req, res) => {
 });
 
 // update one
-router.patch('/:Id', async (req, res) => {
+router.put('/:Id', async (req, res) => {
   try {
     const updateId = await Post.updateOne(
-      {_id: req.params.Id },
+      {_id: req.params.Id},
       { $set: {favorite: req.body.favorite}
     });
     res.json(updateId);
