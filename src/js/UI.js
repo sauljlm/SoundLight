@@ -3,26 +3,27 @@ import Singleton from './singleton';
 export default class UI {
   constructor() {
     // elements
-    this.contPlayer = document.querySelector('.js-cont-player');
-    this.btnClose = document.querySelector('.btn-close');
-    this.btnShowPlayer = document.querySelector('.show-player');
-    this.contCover = document.querySelector('.cover');
-    this.contName = document.querySelector('.song_name_active');
-    this.contArtist = document.querySelector('.song_artist');
-    this.contSongs = document.querySelector('.songs_list');
-    this.contActiveName = document.querySelector('.song_name');
-    this.contActivePlay = document.querySelector('.play_button');
+    this.contPlayer = document.querySelector('#song');
+    this.btnClose = document.querySelector('#btn-close');
+    this.btnShowPlayer = document.querySelector('#show-player');
+    this.contCover = document.querySelector('#song-cover');
+    this.contName = document.querySelector('#active-song-name');
+    this.contArtist = document.querySelector('#song-artist');
+    this.contSongs = document.querySelector('#songs-list');
+    this.contActiveName = document.querySelector('#song-name');
+    this.btnPlayActiveSong = document.querySelector('#active-song-btn-play');
+    this.playerBtnPlay = null;
 
     // instances
     this.singleton = new Singleton();
 
     // events
     this.btnClose.addEventListener('click', () => {
-      this.contPlayer.classList.toggle('cont-player--hide');
+      this.contPlayer.classList.toggle('song--hide');
     });
 
     this.btnShowPlayer.addEventListener('click', () => {
-      this.contPlayer.classList.toggle('cont-player--hide');
+      this.contPlayer.classList.toggle('song--hide');
     });
   }
 
@@ -43,7 +44,7 @@ export default class UI {
 
   renderRandomBtn() {
     const randomBtn = document.createElement('button');
-    randomBtn.classList.add('btn-random');
+    randomBtn.classList.add('player__btn-random');
     randomBtn.setAttribute('aria-label', 'button-random');
 
     return randomBtn;
@@ -51,7 +52,7 @@ export default class UI {
 
   renderRepeatBtn() {
     const repeatBtn = document.createElement('button');
-    repeatBtn.classList.add('btn-repeat');
+    repeatBtn.classList.add('player__btn-repeat');
     repeatBtn.setAttribute('aria-label', 'button-repeat');
 
     return repeatBtn;
@@ -59,15 +60,16 @@ export default class UI {
 
   renderPlayBtn() {
     const playBtn = document.createElement('button');
-    playBtn.classList.add('btn-play');
+    playBtn.classList.add('player__btn-play', 'btn-play');
     playBtn.setAttribute('aria-label', 'button-play');
+    this.playerBtnPlay = playBtn;
 
     return playBtn;
   }
 
   renderPreviousBtn() {
     const previousBtn = document.createElement('button');
-    previousBtn.classList.add('btn-back');
+    previousBtn.classList.add('player__btn-back');
     previousBtn.setAttribute('aria-label', 'button-back');
 
     return previousBtn;
@@ -75,7 +77,7 @@ export default class UI {
 
   renderNextBtn() {
     const nextBtn = document.createElement('button');
-    nextBtn.classList.add('btn-next');
+    nextBtn.classList.add('player__btn-next');
     nextBtn.setAttribute('aria-label', 'button-next');
 
     return nextBtn;
@@ -83,7 +85,7 @@ export default class UI {
 
   renderControls() {
     const controls = document.createElement('div');
-    controls.classList.add('controls');
+    controls.classList.add('player__controls');
 
     return controls;
   }
@@ -114,42 +116,42 @@ export default class UI {
 
   renderSlider() {
     const colSlider = document.createElement('div');
-    colSlider.classList.add('slider');
+    colSlider.classList.add('player__slider');
 
     return colSlider;
   }
 
   renderColTime() {
     const colTime = document.createElement('p');
-    colTime.classList.add('time');
+    colTime.classList.add('player__time');
 
     return colTime;
   }
 
   renderColDur() {
     const colDuration = document.createElement('p');
-    colDuration.classList.add('duration');
+    colDuration.classList.add('player__duration');
 
     return colDuration;
   }
 
   renderTimer() {
     const row = document.createElement('div');
-    row.classList.add('timer');
+    row.classList.add('player__timer');
 
     return row;
   }
 
   renderContSongs() {
     const container = document.createElement('ul');
-    container.setAttribute('class', 'songs');
+    container.setAttribute('class', 'songs-list__cont');
 
     return container;
   }
 
   cleanSongListClass() {
     document.querySelectorAll('.song').forEach((element) => {
-      element.classList.remove('song-active');
+      element.classList.remove('songs-list__item--active');
     });
   }
 
@@ -158,7 +160,7 @@ export default class UI {
     item.setAttribute('data-id', `${dataSongs[index]._id}`);
     item.setAttribute('id', `${index}`);
     item.setAttribute('dataSong', `${dataSongs[index].dataSong}`);
-    item.setAttribute('class', 'song clearfix');
+    item.setAttribute('class', 'songs-list__item clearfix');
   
     const title = document.createElement('p');
     title.innerHTML = `${song.title} - ${song.artist}`;
@@ -175,50 +177,46 @@ export default class UI {
   renderUIBtnFavorite(favorite) {
     const btnAdd = document.createElement('button');
 
-    btnAdd.setAttribute('class', 'btn-favorite');
+    btnAdd.setAttribute('class', 'songs-list__btn-fav');
     btnAdd.setAttribute('aria-label', 'btn add to playlist');
 
     if (favorite) {
-      btnAdd.classList.add('btn-favorite-active');
+      btnAdd.classList.add('songs-list__btn-fav--active');
     }
 
     return btnAdd;
   }
 
-  updateUIBtnFavorite(btnAdd, favorite) {
-    if (favorite) {
-      btnAdd.classList.add('btn-favorite-active');
-    } else {
-      btnAdd.classList.remove('btn-favorite-active');
-    }
+  updateUIBtnFavorite(btnAdd) {
+    btnAdd.classList.toggle('songs-list__btn-fav--active');
   }
 
   updateUISongActive(songSelected) {
-    const songs = document.querySelectorAll('.song');
+    const songs = document.querySelectorAll('.songs-list__item');
     songs.forEach((song, index) => {
-      song.classList.remove('song-active');
+      song.classList.remove('songs-list__item--active');
       if (songSelected === index) {
-        song.classList.add('song-active');
+        song.classList.add('songs-list__item--active');
       }
     });
   }
 
-  toggleUiPlayBtn(playing, playBtn) {
+  togglePlayBtn(playing) {
     if (playing) {
-      this.contActivePlay.classList.remove('btn-active');
-      playBtn.classList.remove('btn-active');
+      this.btnPlayActiveSong.classList.add('btn-pause');
+      this.playerBtnPlay.classList.add('btn-pause');
     } else {
-      this.contActivePlay.classList.add('btn-active');
-      playBtn.classList.add('btn-active');
+      this.btnPlayActiveSong.classList.remove('btn-pause');
+      this.playerBtnPlay.classList.remove('btn-pause');
     }
   }
 
   toggleRandomIcon() {
-    this.randomIcon.classList.toggle('btn-random--active');
+    this.randomIcon.classList.toggle('player__btn-random--active');
   }
 
   toggleRepeatIcon() {
-    this.repeatIcon.classList.toggle('btn-repeat--active');
+    this.repeatIcon.classList.toggle('player__btn-repeat--active');
   }
 
   cleanContainer(container) { // eslint-disable-line

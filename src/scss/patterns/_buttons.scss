@@ -1,37 +1,16 @@
-.btn-favorite {
-  width: 30px;
-  height: 30px;
-  background-image: url('../img/system/favorite.png');
+.btn-play {
+  background-image: url('../img/system/play.png');
 }
 
-.btn-favorite-active {
-  width: 30px;
-  height: 30px;
-  background-image: url('../img/system/favoriteActive.png');
+.btn-pause {
+  background-image: url('../img/system/pause.png');
 }
 
-.btn-close {
+.song__btn-close {
   background-image: url('../img/system/close.png');
   width: 30px;
   justify-self: end;
   margin: 5%; 
-}
-
-.btn-play-list {
-  width: 100%;
-  height: 100%;
-}
-
-.btn-play-list__icon {
-  width: 30px;
-  margin: 0 10px;
-
-  @media (min-width: 768px){
-    width: 35px;
-  }
-  @media (min-width: 1024px){
-    width: 40px;
-  }
 }
 
 .sr-only {
@@ -45,7 +24,7 @@
   border: 0;
 }
 
-.show-player {
+.active-song__btn-show {
   background-image: url('../img/system/showPlayer.png');
 }
 
@@ -55,43 +34,4 @@
 
 .favorite_button_active {
   background-image: url('../img/system/favoriteActive.png');
-}
-
-.btn-play, 
-.play_button {
-  width: 50px;
-  height: 50px;
-  background-image: url('../img/system/play.png');
-}
-
-.btn-active {
-  background-image: url('../img/system/pause.png');
-}
-
-.btn-back {
-  margin-top: 10px;
-  background-image: url('../img/system/back.png');
-}
-
-.btn-next {
-  margin-top: 10px;
-  background-image: url('../img/system/next.png');
-}
-
-.btn-random {
-  margin-top: 10px;
-  background-image: url('../img/system/random.png');
-}
-
-.btn-random--active {
-  background-image: url('../img/system/randomActive.png');
-}
-
-.btn-repeat {
-  margin-top: 10px;
-  background-image: url('../img/system/repeat.png');
-}
-
-.btn-repeat--active {
-  background-image: url('../img/system/repeatActive.png');
 }

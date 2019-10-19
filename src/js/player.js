@@ -3,9 +3,9 @@ import UI from './UI';
 
 export default class Player {
   constructor() {
-    this.contActivePlay = document.querySelector('.play_button');
-    this.contPlayer = document.querySelector('.js-cont-player');
-    this.contSongs = document.querySelector('.songs_list');
+    this.btnPlayActiveSong = document.querySelector('#active-song-btn-play');
+    this.contPlayer = document.querySelector('#song');
+    this.contSongs = document.querySelector('#songs-list');
 
     this.pathUrl = 'https://sauljlm.github.io/songs-data';
 
@@ -92,7 +92,7 @@ export default class Player {
     this.audio.addEventListener('ended', () => {
       this.ended();
     });
-    this.contActivePlay.addEventListener('click', this.togglePlay.bind(this));
+    this.btnPlayActiveSong.addEventListener('click', this.togglePlay.bind(this));
   }
 
   startPlaying(time, setAction) {
@@ -183,9 +183,10 @@ export default class Player {
         this.time = 0;
         this.load(this.singleton.getOne(this.songSelected));
         this.play();
-        this.contActivePlay.classList.add('btn-active');
         this.UI.render(song);
         this.setSongActive(this.songSelected);
+        console.log(this.playing);
+        this.UI.togglePlayBtn(this.playing);
       });
 
       itemSong.appendChild(this.renderBtnFavorite(index));
@@ -211,10 +212,10 @@ export default class Player {
     const btnAdd = this.UI.renderUIBtnFavorite(song[index].favorite);
 
     btnAdd.addEventListener('click', () => {
+      this.UI.updateUIBtnFavorite(btnAdd);
       this.singleton.update(song[index]._id, index)
       .then(() => {
         song = this.updateDataSongs();
-        this.UI.updateUIBtnFavorite(btnAdd, song[index].favorite);
         this.singleton.generatePlayList();
         if (this.singleton.getViewPlayList) {
           this.renderListSongs();
@@ -265,12 +266,12 @@ export default class Player {
 
   play() {
     this.audio.play();
-    this.playing = !this.playing;
+    this.playing = true;
   }
 
   pause() {
     this.audio.pause();
-    this.playing = !this.playing;
+    this.playing = false;
   }
 
   actionRepeat() {
@@ -278,24 +279,21 @@ export default class Player {
     if (this.repeat) {
       this.audio.loop = this.repeat;
     }
-    this.repeatBtn.classList.toggle('repeat-active');
+    this.repeatBtn.classList.toggle('player__btn-repeat--active');
   }
 
   toggleRandom() {
     this.random = !this.random;
-    this.randomBtn.classList.toggle('random-active');
+    this.randomBtn.classList.toggle('player__btn-random--active');
   }
 
   togglePlay() {
     if (this.playing) {
       this.pause();
-      this.contActivePlay.classList.remove('btn-active');
-      this.playBtn.classList.remove('btn-active');
     } else {
       this.play();
-      this.contActivePlay.classList.add('btn-active');
-      this.playBtn.classList.add('btn-active');
     }
+    this.UI.togglePlayBtn(this.playing);
     this.setSongActive();
   }
 

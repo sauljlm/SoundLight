@@ -2,7 +2,7 @@ import Singleton from './singleton';
 
 export default class PlayList {
   constructor(player) {
-    this.btnPlayList = document.querySelector('.js-btn-playlist');
+    this.btnPlayList = document.querySelector('#btn-playlist');
 
     this.singleton = new Singleton();
     this.player = player;

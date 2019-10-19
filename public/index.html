@@ -11,31 +11,31 @@
   <link rel="stylesheet" href="main.css">
 </head>
 <body>
-  <div class="container" id="songs_container">
+  <div class="container">
     <header class="header">
       <h1 class="header__title">SoundLight</h1>
       <h2 class="header__sub-title">Player</h2>
     </header>
-    <div class="songs_list"></div>
+    <div class="songs-list" id="songs-list"></div>
 
-    <div class="active_song">
-      <button aria-label='btn show player' class="show-player"></button> 
-      <h4 class="song_name_active"></h4>
-      <button aria-label='button play' class="play_button"></button>
+    <div class="active-song">
+      <button aria-label='btn show player' class="active-song__btn-show" id="show-player"></button> 
+      <h4 id="active-song-name"></h4>
+      <button aria-label='button play' id="active-song-btn-play" class="active-son__btn-play btn-play"></button>
     </div>
 
     <div class="menu">
-      <button class="btn-play-list js-btn-playlist">
-        <img class="btn-play-list__icon" src="./img/playlist (1).png" alt="Playlist album">
+      <button class="menu__btn-playlist" id="btn-playlist">
+        <img class="menu__playlist-icon" src="./img/playlist (1).png" alt="Playlist album">
       </button>
     </div>
 
-    <div class="cont-player js-cont-player cont-player--hide">
-      <button aria-label='button-close' class="btn-close"></button>
-      <div class="song_coverimage"><img class="cover"></div>
-      <div class="song_info">
-        <h3 class="song_name"></h3>
-        <p class="song_artist"></p>
+    <div class="song song--hide" id="song">
+      <button aria-label='button close' class="song__btn-close" id="btn-close"></button>
+      <div class="song__cont-cover"><img class="song__cover" id="song-cover"></div>
+      <div class="song__info">
+        <h3 class="song__name" id="song-name"></h3>
+        <p class="song__artist" id="song-artist"></p>
       </div>
     </div>
   </div>

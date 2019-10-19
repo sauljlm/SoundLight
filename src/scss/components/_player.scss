@@ -1,40 +1,40 @@
-.active_song {
+.active-song {
   align-items: center;
   background: $active-song9gradient;
   box-sizing: border-box;
   display: flex;
   justify-content: space-around;
   width: 100%;
-
-  .play_button {
-    height: 30px;
-    width: 30px;
-  }
 }
 
-.controls {
+.active-son__btn-play {
+  width: 30px;
+  height: 30px;
+}
+
+.player__controls {
   align-items: flex-start;
   display: flex;
   justify-content: space-around;
   margin-top: 5%;
 }
 
-.cover {
+.song__cover {
   height: 100%;
   margin-left: 9%;
   max-height: 100%;
   width: 84%;
   
-  @media (min-width: 768px){
+  @include mquery("md") {
     margin-top: 0;
     max-height: 100%; 
     max-width: 100%;
   }
-  @media (min-width: 800px){
+  @include mquery(50em) {
     margin-left: 19%;
     width: 60%;
   }
-  @media (min-width: 1024px){
+  @include mquery("lg") {
     margin-left: 33%;
     max-width: 42%;
     width: 37%;
@@ -45,11 +45,44 @@
   align-self: center;
 }
 
-.song_artist {
+.song__artist {
   text-align: center;
 }
 
-.cont-player {
+.player__btn-play {
+  width: 50px;
+  height: 50px;
+}
+
+.player__btn-back {
+  margin-top: 10px;
+  background-image: url('../img/system/back.png');
+}
+
+.player__btn-next {
+  margin-top: 10px;
+  background-image: url('../img/system/next.png');
+}
+
+.player__btn-random {
+  margin-top: 10px;
+  background-image: url('../img/system/random.png');
+}
+
+.player__btn-random--active {
+  background-image: url('../img/system/randomActive.png');
+}
+
+.player__btn-repeat {
+  margin-top: 10px;
+  background-image: url('../img/system/repeat.png');
+}
+
+.player__btn-repeat--active {
+  background-image: url('../img/system/repeatActive.png');
+}
+
+.song {
   background: $gradient;;
   display: grid;
   grid-row: 4;
@@ -70,21 +103,21 @@
   z-index: 1;
 }
 
-.cont-player--hide {
+.song--hide {
   top: 150%;
   transition: 2s;
 }
 
-.song_info {
+.song__info {
   align-self: center;
   grid-area: info;
 
-  @media (min-width: 768px){
+  @include mquery("md") {
     margin-top: 0%;
   }
 }
 
-.song_image {
+.song__image {
   align-items: center;
   background-size: cover;
   display: flex;
@@ -92,17 +125,17 @@
   width: 90%;
 }
 
-.song_name {
+.song__name {
   margin: 1%;
   text-align: center;
 }
 
-.timer {
+.player__timer {
   align-items: center;
   display: flex;
   justify-content: space-around;
 
-  @media (min-width: 768px) {
+  @include mquery("md") {
     margin-top: 1%;
   }
 }

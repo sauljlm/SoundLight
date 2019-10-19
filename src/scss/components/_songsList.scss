@@ -1,4 +1,19 @@
-.song {
+.songs-list {
+  overflow: auto;
+}
+
+.songs-list__btn-fav {
+  background-image: url('../img/system/favorite.png');
+  height: 30px;
+  overflow: visible;
+  width: 30px;
+}
+
+.songs-list__btn-fav--active {
+  background-image: url('../img/system/favoriteActive.png');
+}
+
+.songs-list__item {
   box-sizing: border-box;
   width: 100%;
   padding: 4%;
@@ -6,25 +21,15 @@
   justify-content: space-between;
   align-items: center;
 
-  @media (min-width: 768px){
+  @include mquery("md") {
     padding: 2%;
   }
+
+  &:hover {
+    box-shadow: $shadow;
+  }  
 }
 
-.song:hover {
+.songs-list__item--active {
   box-shadow: $shadow;
 }
-
-.song-active {
-  box-shadow: $shadow;
-}
-
-.songs_list {
-  overflow:auto;
-
-  button {
-    overflow: visible;
-  }
-}
-
-
