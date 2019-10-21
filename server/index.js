@@ -18,7 +18,12 @@ app.use('/', routes);
 
 mongoose.connect(url, 
 { useNewUrlParser: true, useUnifiedTopology: true }, () => {
-  console.log('conected to dataBase');
 })
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log('conected to dataBase');
+});
 
 app.listen(1234);

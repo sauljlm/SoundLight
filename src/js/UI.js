@@ -21,7 +21,6 @@ export default class UI {
     this.btnClose.addEventListener('click', () => {
       this.contPlayer.classList.toggle('song--hide');
     });
-
     this.btnShowPlayer.addEventListener('click', () => {
       this.contPlayer.classList.toggle('song--hide');
     });
@@ -155,11 +154,9 @@ export default class UI {
     });
   }
 
-  renderSongsList(dataSongs, song, index) {
+  renderSongItem(dataSongs, song, index) {
     const item = document.createElement('li');
     item.setAttribute('data-id', `${dataSongs[index]._id}`);
-    item.setAttribute('id', `${index}`);
-    item.setAttribute('dataSong', `${dataSongs[index].dataSong}`);
     item.setAttribute('class', 'songs-list__item clearfix');
   
     const title = document.createElement('p');
@@ -191,11 +188,12 @@ export default class UI {
     btnAdd.classList.toggle('songs-list__btn-fav--active');
   }
 
-  updateUISongActive(songSelected) {
+  updateUIItemActive(songSelected) {
     const songs = document.querySelectorAll('.songs-list__item');
-    songs.forEach((song, index) => {
+    songs.forEach((song) => {
+      const id = song.getAttribute('data-id');
       song.classList.remove('songs-list__item--active');
-      if (songSelected === index) {
+      if (songSelected === id) {
         song.classList.add('songs-list__item--active');
       }
     });

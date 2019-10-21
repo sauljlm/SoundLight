@@ -26,14 +26,14 @@ export default class Player {
     this.sliderLabel = null;
     this.durationElement = null;
     this.songSelected = null;
-    this.arraySelected = null;
 
     // values
     this.random = false;
-    this.playing = false;
+    this.playingState = false;
     this.loaded = false;
     this.repeat = false;
     this.TIME = 0;
+    this.playingIndex = 0;
   }
 
   get time() {
@@ -42,7 +42,6 @@ export default class Player {
 
   set time(value) {
     this.TIME = value;
-
     this.sliderElement.value = (this.TIME * 100) / this.audio.duration;
     this.timeElement.innerText = this.time;
   }
@@ -91,6 +90,7 @@ export default class Player {
     });
     this.audio.addEventListener('ended', () => {
       this.ended();
+      this.setSongActive(this.singleton.getPlaying);
     });
     this.btnPlayActiveSong.addEventListener('click', this.togglePlay.bind(this));
   }
@@ -101,12 +101,13 @@ export default class Player {
     } else if (setAction === 'previous') {
       this.load(this.singleton.getPrevious(this.random, this.setPrevious()));
     }
-    if (this.playing) {
+    if (this.playingState) {
       this.play();
     }
     this.time = time;
     this.UI.render(this.songData);
-    this.setSongActive();
+    this.setSongActive(this.songSelected);
+    this.UI.togglePlayBtn(this.playingState);
   }
 
   load(songUrl = this.singleton.getRandom(this.random)) {
@@ -147,8 +148,12 @@ export default class Player {
     this.randomBtn.addEventListener('click', this.toggleRandom.bind(this));
     this.repeatBtn.addEventListener('click', this.actionRepeat.bind(this));
     this.playBtn.addEventListener('click', this.togglePlay.bind(this));
-    this.previousBtn.addEventListener('click', this.toggleBack.bind(this));
-    this.nextBtn.addEventListener('click', this.toggleNext.bind(this));
+    this.previousBtn.addEventListener('click', () => {
+      this.toggleBack();
+    });
+    this.nextBtn.addEventListener('click', () => {
+      this.toggleNext();
+    });
 
     controls.appendChild(this.randomBtn);
     controls.appendChild(this.previousBtn);
@@ -169,6 +174,16 @@ export default class Player {
     this.contPlayer.appendChild(player);
   }
 
+  songItemAction(song, index) {
+    this.UI.cleanSongListClass();
+    this.songSelected = song._id;
+    this.load(this.singleton.getOne(this.songSelected));
+    this.playingState = true;
+    this.singleton.setPlaying = this.songSelected;
+    this.playingIndex = index;
+    this.startPlaying(0);
+  }
+
   renderListSongs() {
     const contSongs = this.UI.renderContSongs();
     let dataSongs = this.updateDataSongs();
@@ -176,21 +191,9 @@ export default class Player {
     this.UI.clearContSongs();
 
     dataSongs.forEach((song, index) => {
-      const itemSong = this.UI.renderSongsList(dataSongs, song, index);
-      itemSong.addEventListener('click', () => {
-        this.UI.cleanSongListClass();
-        this.songSelected = index;
-        this.time = 0;
-        this.load(this.singleton.getOne(this.songSelected));
-        this.play();
-        this.UI.render(song);
-        this.setSongActive(this.songSelected);
-        console.log(this.playing);
-        this.UI.togglePlayBtn(this.playing);
-      });
-
+      const itemSong = this.UI.renderSongItem(dataSongs, song, index);
+      itemSong.addEventListener('click', () => this.songItemAction(song, index));
       itemSong.appendChild(this.renderBtnFavorite(index));
-
       contSongs.appendChild(itemSong);
       this.contSongs.appendChild(contSongs);
       this.setSongActive();
@@ -224,36 +227,53 @@ export default class Player {
     });
 
     return btnAdd;
-  } 
+  }
 
   setSongActive(songSelected) {
     if (songSelected) {
-      this.singleton.setPlaying = songSelected;
       this.songSelected = songSelected;
     } else {
       this.songSelected = this.singleton.getPlaying;
     }
-    this.UI.updateUISongActive(this.songSelected);
-  }
+    this.UI.updateUIItemActive(this.songSelected);
+ }
 
   setNext() {
     let playing = this.singleton.getPlaying;
-    if (playing >= this.singleton.getSongs.length - 1) {
-      playing = 0;
+    const songList = this.singleton.getActiveList();
+    let id = null;
+
+    if (this.playingIndex >= songList.length - 1) {
+      id = songList[0]._id;
+      this.playingIndex = 0;
     } else {
-      playing += 1;
+      songList.forEach((element, index) => {
+        if (element._id === playing) {
+          id = songList[index += 1]._id;
+          this.playingIndex = index;
+        }
+      });
     }
-    return playing;
+    return id;
   }
 
   setPrevious() {
     let playing = this.singleton.getPlaying;
-    if (playing <= 0) {
-      playing = this.singleton.getSongs.length - 1;
+    const songList = this.singleton.getActiveList();
+    let id = null;
+
+    if (this.playingIndex <= 0) {
+      id = songList[songList.length -1]._id;
+      this.playingIndex = songList.length -1;
     } else {
-      playing -= 1;
+      songList.forEach((element, index) => {
+        if (element._id === playing) {
+          id = songList[index -= 1]._id;
+          this.playingIndex = index;
+        }
+      });
     }
-    return playing;
+    return id;
   }
 
   timechanged() {
@@ -266,12 +286,12 @@ export default class Player {
 
   play() {
     this.audio.play();
-    this.playing = true;
+    this.playingState = true;
   }
 
   pause() {
     this.audio.pause();
-    this.playing = false;
+    this.playingState = false;
   }
 
   actionRepeat() {
@@ -288,31 +308,28 @@ export default class Player {
   }
 
   togglePlay() {
-    if (this.playing) {
+    if (this.playingState) {
       this.pause();
     } else {
       this.play();
     }
-    this.UI.togglePlayBtn(this.playing);
-    this.setSongActive();
+    this.UI.togglePlayBtn(this.playingState);
   }
 
   toggleNext() {
-    if (this.playing) {
+    if (this.playingState) {
       this.startPlaying(0, 'next');
     } else {
       this.startPlaying(this.TIME, 'next');
     }
-    this.setSongActive();
   }
 
   toggleBack() {
-    if (this.playing) {
+    if (this.playingState) {
       this.startPlaying(0, 'previous');
     } else {
       this.startPlaying(this.TIME, 'previous');
     }
-    this.setSongActive();
   }
 
   slideAction() {

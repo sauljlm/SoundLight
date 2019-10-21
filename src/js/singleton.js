@@ -33,52 +33,78 @@ export default class Singleton {
     return this.playList;
   }
 
-  get getRandomSong() {
-    const random = Math.round(Math.random() * (this.DATA.length - 0) + 0);
-    this.playing = random;
-    return this.DATA[random];
-  }
-
   async loadData() {
     const response = await fetch(this.url);
     const data = await response.json();
     this.DATA = data;
   }
 
-  getOne(index) {
+  getActiveList() {
+    let songList = null;
+    if (this.getViewPlayList) {
+      songList = this.getPlayList;
+    } else {
+      songList = this.getSongs;
+    }
+    return songList;
+  }
+
+  getOne(id) {
+    const songList = this.getActiveList();
     let song = null;
-    song = this.DATA[index];
+
+    songList.forEach((element, index) => {
+      if(element._id === id) {
+        song = songList[index];
+      }
+    });
     return song;
   }
 
   getRandom(random) {
+    const songList = this.getActiveList();
     let song = null;
     if (random === true) {
-      song = this.getRandomSong;
+      const random = Math.round(Math.random() * (songList.length - 0) + 0);
+      this.playing = songList[random]._id;
+      song = songList[random];
     } else {
-      song = this.DATA[this.playing];
+      song = this.getNext();
     }
     return song;
   }
 
-  getNext(random, next = this.playing) {
+  getNext(random, id) {
+    const songList = this.getActiveList();
     let song = null;
     if (random === true) {
-      song = this.getRandomSong;
+      song = this.getRandom(true);
+    } else if (!id) {
+      song = songList[0];
+      this.playing = songList[0]._id;
     } else {
-      song = this.DATA[next];
-      this.playing = next;
+      songList.forEach((e,i) => {
+        if (e._id === id) {
+          song = songList[i];
+          this.playing = id;
+        }
+      });
     }
     return song;
   }
 
-  getPrevious(random, previous = this.playing) {
+  getPrevious(random, id) {
+    const songList = this.getActiveList();
     let song = null;
     if (random === true) {
-      song = this.getRandomSong;
+      song = this.getRandom(true);
     } else {
-      song = this.DATA[previous];
-      this.playing = previous;
+      songList.forEach((e,i) => {
+        if (e._id === id) {
+          song = songList[i];
+          this.playing = id;
+        }
+      });
     }
     return song;
   }
@@ -100,7 +126,6 @@ export default class Singleton {
     });
   } 
 
-  // post
   update(Id, index) {
     return new Promise(resolve => {
       fetch(`${this.url}/${Id}`, {
