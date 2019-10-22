@@ -5,7 +5,7 @@ export default class Singleton {
     this.playList = [];
     this.playing = 0;
     this.viewPlayList = false;
-    this.url = 'http://localhost:1234';
+    this.url = 'https://sound-light.herokuapp.com';
 
     if (!instance) {
       instance = this;
