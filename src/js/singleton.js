@@ -127,17 +127,19 @@ export default class Singleton {
   } 
 
   update(Id, index) {
+    const songs = this.DATA;
     return new Promise(resolve => {
       fetch(`${this.url}/${Id}`, {
         method: 'PUT',
-        body: JSON.stringify({ favorite : !this.DATA[index].favorite }),
+        body: JSON.stringify({ favorite : !songs[index].favorite }),
         headers: {
           'Content-type': 'application/json; charset=UTF-8'
         }
       })
       .then(response => response.json())
       .then(() => this.loadData())
-      .then(() => { resolve() })
+      .then(() => this.generatePlayList())
+      .then(() => resolve())
     });
   }
 }
