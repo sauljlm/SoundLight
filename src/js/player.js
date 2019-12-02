@@ -186,7 +186,7 @@ export default class Player {
 
   renderListSongs() {
     const contSongs = this.UI.renderContSongs();
-    let dataSongs = this.updateDataSongs();
+    const dataSongs = this.singleton.getActiveList();
 
     this.UI.clearContSongs();
 
@@ -200,31 +200,21 @@ export default class Player {
     });
   }
 
-  updateDataSongs() {
-    let dataSongs = null;
-    if (this.singleton.getViewPlayList) {
-      dataSongs = this.singleton.getPlayList;
-    } else {
-      dataSongs = this.singleton.getSongs;
-    }
-    return dataSongs;
-  }
-
-  renderBtnFavorite(index) {
-    let song = this.updateDataSongs();
-    const btnAdd = this.UI.renderUIBtnFavorite(song[index].favorite);
-
-    btnAdd.addEventListener('click', () => {
-      this.UI.updateUIBtnFavorite(btnAdd);
-      this.singleton.update(song[index]._id, index)
+  favoriteAction(song, index, btn) {
+    this.UI.updateUIBtnFavorite(btn);
+    this.singleton.update(song[index]._id, index)
       .then(() => {
-        song = this.updateDataSongs();
-        this.singleton.generatePlayList();
         if (this.singleton.getViewPlayList) {
           this.renderListSongs();
         }
-      });
-    });
+      })
+  }
+
+  renderBtnFavorite(index) {
+    const song = this.singleton.getActiveList();
+    const btnAdd = this.UI.renderUIBtnFavorite(song[index].favorite);
+
+    btnAdd.addEventListener('click', () => this.favoriteAction(song, index, btnAdd));
 
     return btnAdd;
   }
@@ -236,10 +226,10 @@ export default class Player {
       this.songSelected = this.singleton.getPlaying;
     }
     this.UI.updateUIItemActive(this.songSelected);
- }
+  }
 
   setNext() {
-    let playing = this.singleton.getPlaying;
+    const playing = this.singleton.getPlaying;
     const songList = this.singleton.getActiveList();
     let id = null;
 
@@ -258,7 +248,7 @@ export default class Player {
   }
 
   setPrevious() {
-    let playing = this.singleton.getPlaying;
+    const playing = this.singleton.getPlaying;
     const songList = this.singleton.getActiveList();
     let id = null;
 

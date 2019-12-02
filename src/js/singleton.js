@@ -54,7 +54,7 @@ export default class Singleton {
     let song = null;
 
     songList.forEach((element, index) => {
-      if(element._id === id) {
+      if (element._id === id) {
         song = songList[index];
       }
     });
@@ -65,9 +65,9 @@ export default class Singleton {
     const songList = this.getActiveList();
     let song = null;
     if (random === true) {
-      const random = Math.round(Math.random() * (songList.length - 0) + 0);
-      this.playing = songList[random]._id;
-      song = songList[random];
+      const randomIndex = Math.round(Math.random() * (songList.length - 0) + 0);
+      this.playing = songList[randomIndex]._id;
+      song = songList[randomIndex];
     } else {
       song = this.getNext();
     }
@@ -83,7 +83,7 @@ export default class Singleton {
       song = songList[0];
       this.playing = songList[0]._id;
     } else {
-      songList.forEach((e,i) => {
+      songList.forEach((e, i) => {
         if (e._id === id) {
           song = songList[i];
           this.playing = id;
@@ -99,7 +99,7 @@ export default class Singleton {
     if (random === true) {
       song = this.getRandom(true);
     } else {
-      songList.forEach((e,i) => {
+      songList.forEach((e, i) => {
         if (e._id === id) {
           song = songList[i];
           this.playing = id;
@@ -124,20 +124,22 @@ export default class Singleton {
         this.playList.push(element);
       }
     });
-  } 
+  }
 
   update(Id, index) {
-    return new Promise(resolve => {
+    const songs = this.DATA;
+    return new Promise((resolve) => {
       fetch(`${this.url}/${Id}`, {
         method: 'PUT',
-        body: JSON.stringify({ favorite : !this.DATA[index].favorite }),
+        body: JSON.stringify({ favorite: !songs[index].favorite }),
         headers: {
-          'Content-type': 'application/json; charset=UTF-8'
-        }
+          'Content-type': 'application/json; charset=UTF-8',
+        },
       })
-      .then(response => response.json())
-      .then(() => this.loadData())
-      .then(() => { resolve() })
+        .then(response => response.json())
+        .then(() => this.loadData())
+        .then(() => this.generatePlayList())
+        .then(() => resolve())
     });
   }
 }
